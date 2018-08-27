@@ -4,7 +4,7 @@ const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 
 class Util {
   constructor() {
-    throw new Error(`${this.constructor.name} sınıfı örneklenemez.`);
+    throw new Error(`The ${this.constructor.name} class may not be instantiated.`);
   }
 
   static _mergeDefault(def, given) {
