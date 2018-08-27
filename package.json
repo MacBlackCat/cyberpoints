@@ -1,0 +1,46 @@
+{
+  "name": "cyberpoints",
+  "version": "1.0.0",
+  "description": "Who is want to connect an API?",
+  "main": "./src/main.js",
+  "scripts": {
+    "test": "node test/tester.js"
+  },
+  "keywords": [
+    "world of warcraft",
+    "wow",
+    "blizzard",
+    "blizzard api",
+    "wow api",
+    "warcraft",
+    "blizzard.net",
+    "riot",
+    "league of legends"
+  ],
+  "devDependencies": {
+    "eslint": "^4.18.0",
+    "@types/node": "^10.5.5"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win64"
+  ],
+  "engines": {
+    "node": ">=10.9.0",
+    "npm": ">=6.4.0"
+  },
+  "homepage": "https://github.com/kendinikertenkelebek/cyberpoints",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kendinikertenkelebek/cyberpoints.git",
+    "bugs": {
+      "url": "https://github.com/kendinikertenkelebek/cyberpoints/issues"
+    }
+  },
+  "author": "Yankı Küçük <kendinikertenkelebek@me.com>",
+  "contributors": [
+    "Yankı Küçük <kendinikertenkelebek@me.com>"
+  ],
+  "license": "Apache-2.0"
+}

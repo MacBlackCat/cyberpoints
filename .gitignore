@@ -1,0 +1,5 @@
+// Ignored File Types
+
+.DS_Store
+.env
+.todo
