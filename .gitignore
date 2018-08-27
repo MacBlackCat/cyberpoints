@@ -1,3 +1,7 @@
+// Node Packages
+
+node_modules/
+
 // Ignored File Types
 
 .DS_Store
