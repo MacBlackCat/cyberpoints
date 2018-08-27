@@ -49,8 +49,7 @@ class Profile {
 
   sc2(token = this._options.token, region = this._options.region) {
     if (!token || typeof token !== 'string') return undefined;
-    const blizz = { region, token };
-    let conn = getRoot(blizz);
+    let conn = getRoot({ region, token });
     return Endpoints.Community(conn).Profile.SC2();
   }
 
@@ -68,8 +67,7 @@ class Profile {
 
   wow(token = this._options.token, region = this._options.region) {
     if (!token || typeof token !== 'string') return undefined;
-    const blizz = { region, token };
-    let conn = getRoot(blizz);
+    let conn = getRoot({ region, token });
     return Endpoints.Community(conn).Profile.WOW();
   }
 }

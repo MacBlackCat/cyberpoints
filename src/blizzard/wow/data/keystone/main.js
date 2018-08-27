@@ -53,8 +53,7 @@ class Keystone {
     if (!connectedReamId || !token || isNaN(parseInt(connectedReamId)) || typeof token !== 'string') {
       return undefined;
     }
-    const molten = { region, locale, token: this._options.token };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, token: this._options.token });
     return Endpoints.Data(core).Keystone.Index(connectedReamId);
   }
 
@@ -96,8 +95,7 @@ class Keystone {
     ) {
       return undefined;
     }
-    const molten = { region, locale, token: this._options.token };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).Keystone.Leaderboard(connectedRalmId, dungeonId, period);
   }
 }

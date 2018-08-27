@@ -55,8 +55,7 @@ class Community {
 
   artisan(artisanSlug, region = this._options.region, locale = this._options.locale) {
     if (!artisanSlug || typeof artisanSlug !== 'string') return undefined;
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).ArtisanAndRecipe.Artisan(artisanSlug);
   }
 
@@ -78,8 +77,7 @@ class Community {
     if (!artisanSlug || !recipeSlug || typeof artisanSlug !== 'string' || typeof recipeSlug !== 'string') {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).ArtisanAndRecipe.Recipe(artisanSlug, recipeSlug);
   }
 
@@ -100,8 +98,7 @@ class Community {
 
   characterClass(classSlug, region = this._options.region, locale = this._options.locale) {
     if (!classSlug || typeof classSlug !== 'string') return undefined;
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).CharacterClassAndSkill.CharacterClass(classSlug);
   }
 
@@ -123,8 +120,7 @@ class Community {
     if (!classSlug || !skillSlug || typeof classSlug !== 'string' || typeof skillSlug !== 'string') {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).CharacterClassAndSkill.Skill(classSlug, skillSlug);
   }
 
@@ -145,8 +141,7 @@ class Community {
 
   follower(followerSlug, region = this._options.region, locale = this._options.locale) {
     if (!followerSlug || typeof followerSlug !== 'string') return undefined;
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Follower(followerSlug);
   }
 
@@ -167,8 +162,7 @@ class Community {
 
   item(itemSlugAndId, region = this._options.region, locale = this._options.locale) {
     if (!itemSlugAndId || typeof itemSlugAndId !== 'string') return undefined;
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Item(itemSlugAndId);
   }
 }

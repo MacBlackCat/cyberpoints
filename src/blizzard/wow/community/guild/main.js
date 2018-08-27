@@ -59,17 +59,19 @@ class Guild {
    */
 
   profile(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !guildName || typeof realm !== 'string' || typeof guildName !== 'string') {
+    if (
+      !realm ||
+      !guildName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof guildName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'achievements,challenge';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Guild.Profile(realm.toLowerCase(), guildName.toLowerCase(), Fields);
+    let molten = ['achievements,challenge'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Guild.Profile(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 
   /**
@@ -88,17 +90,19 @@ class Guild {
    */
 
   members(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !guildName || typeof realm !== 'string' || typeof guildName !== 'string') {
+    if (
+      !realm ||
+      !guildName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof guildName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'members';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Guild.Members(realm.toLowerCase(), guildName.toLowerCase(), Fields);
+    let molten = ['members'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Guild.Members(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 
   /**
@@ -130,17 +134,19 @@ class Guild {
    */
 
   achievements(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !guildName || typeof realm !== 'string' || typeof guildName !== 'string') {
+    if (
+      !realm ||
+      !guildName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof guildName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'achievements';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Guild.Achievements(realm.toLowerCase(), guildName.toLowerCase(), Fields);
+    let molten = ['achievements'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Guild.Achievements(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString()); // eslint-disable-line max-len
   }
 
   /**
@@ -161,17 +167,19 @@ class Guild {
    */
 
   news(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !guildName || typeof realm !== 'string' || typeof guildName !== 'string') {
+    if (
+      !realm ||
+      !guildName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof guildName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'news';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Guild.News(realm.toLowerCase(), guildName.toLowerCase(), Fields);
+    let molten = ['news'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Guild.News(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 
   /**
@@ -189,17 +197,19 @@ class Guild {
    */
 
   challenge(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !guildName || typeof realm !== 'string' || typeof guildName !== 'string') {
+    if (
+      !realm ||
+      !guildName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof guildName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'challenge';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Guild.Challenge(realm.toLowerCase(), guildName.toLowerCase(), Fields);
+    let molten = ['challenge'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Guild.Challenge(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 }
 

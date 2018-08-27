@@ -50,8 +50,7 @@ class Specialization {
 
   index(token = this._options.token, region = this._options.region, locale = this._options.locale) {
     if (!token || typeof token !== 'string') return undefined;
-    const molten = { region, locale, token };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).Specialization.Index();
   }
 
@@ -75,8 +74,7 @@ class Specialization {
     if (!specId || !token || isNaN(parseInt(specId)) || typeof token !== 'string') {
       return undefined;
     }
-    const molten = { region, locale, token };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).Specialization.Specialization(specId);
   }
 }

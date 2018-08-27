@@ -51,8 +51,7 @@ class Outh2 {
 
   user(token = this._options.token, region = this._options.region) {
     if (!token || typeof token !== 'string') return undefined;
-    const blizz = { region, token };
-    let conn = getRoot(blizz);
+    let conn = getRoot({ region, token });
     return Endpoints.Community(conn).Account();
   }
 }

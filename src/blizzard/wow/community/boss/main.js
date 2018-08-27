@@ -42,12 +42,11 @@ class Boss {
    * @example
    * // If you want pass any optional parameter just type 'undefined'
    * .community.boss.list(undefined, 'en_US');
-   * @return {?String} API link for send an request
+   * @returns {?String} API link for send an request
    */
 
   list(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Boss.MasterList();
   }
 
@@ -62,13 +61,12 @@ class Boss {
    * @example
    * // If you want to pass any optional parameter just type 'undefined'
    * .community.boss.get('24723', 'kr', undefined);
-   * @return {?String} API link for send an request
+   * @returns {?String} API link for send an request
    */
 
   get(bossId, region = this._options.region, locale = this._options.locale) {
     if (!bossId || isNaN(parseInt(bossId))) return undefined;
-    let molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Boss.Boss(bossId);
   }
 }

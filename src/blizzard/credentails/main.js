@@ -31,17 +31,15 @@ class Credentails {
     this._options = options;
   }
 
-  fetch(key = this._options.key, secret = this._options.secret, region = this._options.region) {
+  fetch(region = this._options.region) {
     if (typeof region !== 'string') return undefined;
-    const molten = { region, key, secret };
-    let core = getRoot(molten);
+    let core = getRoot({ region, key: this._options.key, secret: this._options.secret });
     return Endpoints.Credentails(core).FetchToken();
   }
 
   check(token = this._options.token, region = this._options.region) {
     if (!token || typeof token !== 'string') return undefined;
-    const molten = Object.assign({}, { region });
-    let core = getRoot(molten);
+    let core = getRoot({ region });
     return Endpoints.Credentails(core).CheckToken(token);
   }
 }

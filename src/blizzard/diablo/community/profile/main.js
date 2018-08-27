@@ -48,8 +48,7 @@ class Profile {
 
   account(account, region = this._options.region, locale = this._options.locale) {
     if (!account || typeof account !== 'string') return undefined;
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Account(account.replace('#', '-'));
   }
 
@@ -71,8 +70,7 @@ class Profile {
     if (!account || heroId || typeof account !== 'string' || isNaN(parseInt(heroId))) {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Hero(account, heroId);
   }
 
@@ -94,8 +92,7 @@ class Profile {
     if (!account || heroId || typeof account !== 'string' || isNaN(parseInt(heroId))) {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.DetailedHeroItems(account, heroId);
   }
 
@@ -117,8 +114,7 @@ class Profile {
     if (!account || heroId || typeof account !== 'string' || isNaN(parseInt(heroId))) {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.DetailedFolloweItems(account, heroId);
   }
 }

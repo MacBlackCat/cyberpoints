@@ -46,8 +46,7 @@ class Data {
    */
 
   achievements(region = this._options.region, locale = this._options.locale) {
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Resources.Achievements();
   }
 
@@ -64,8 +63,7 @@ class Data {
    */
 
   rewards(region = this._options.region, locale = this._options.locale) {
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Resources.Rewards();
   }
 }

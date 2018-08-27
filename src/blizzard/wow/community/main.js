@@ -65,8 +65,7 @@ class Community {
 
   achievement(id, region = this._options.region, locale = this._options.locale) {
     if (!id || isNaN(parseInt(id))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Achievement(id);
   }
 
@@ -93,8 +92,7 @@ class Community {
 
   auction(realm, region = this._options.region, locale = this._options.locale) {
     if (!realm || typeof realm !== 'string') return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Auction(realm.toLocaleLowerCase());
   }
 
@@ -113,8 +111,7 @@ class Community {
    */
 
   mount(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Mount();
   }
 
@@ -139,8 +136,7 @@ class Community {
     if (!bracket || typeof bracket !== 'string' || !Brackets.includes(bracket)) {
       return undefined;
     }
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pvp(bracket);
   }
 
@@ -161,8 +157,7 @@ class Community {
 
   quest(questId, region = this._options.region, locale = this._options.locale) {
     if (!questId || isNaN(parseInt(questId))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Quest(questId);
   }
 
@@ -203,8 +198,7 @@ class Community {
    */
 
   reamlStatus(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).RealmStatus();
   }
 
@@ -225,8 +219,7 @@ class Community {
 
   recipe(recipeId, region = this._options.region, locale = this._options.locale) {
     if (!recipeId || isNaN(parseInt(recipeId))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Recipe(recipeId);
   }
 
@@ -247,8 +240,7 @@ class Community {
 
   spell(spellId, region = this._options.region, locale = this._options.locale) {
     if (!spellId || isNaN(parseInt(spellId))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Spell(spellId);
   }
 }

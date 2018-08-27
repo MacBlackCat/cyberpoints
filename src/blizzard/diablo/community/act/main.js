@@ -46,8 +46,7 @@ class Act {
    */
 
   index(region = this._options.region, locale = this._options.locale) {
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Act.Index();
   }
 
@@ -66,8 +65,7 @@ class Act {
 
   get(actId, region = this._options.region, locale = this._options.locale) {
     if (!actId || isNaN(parseInt(actId))) return undefined;
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Act.Act(actId);
   }
 }

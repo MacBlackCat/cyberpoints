@@ -59,8 +59,7 @@ class Profile {
     ) {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Profile(id, profileRegion, name);
   }
 
@@ -90,8 +89,7 @@ class Profile {
     ) {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Ledders(id, profileRegion, name);
   }
 
@@ -121,8 +119,7 @@ class Profile {
     ) {
       return undefined;
     }
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.MatchHistory(id, profileRegion, name);
   }
 }

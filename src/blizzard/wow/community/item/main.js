@@ -47,8 +47,7 @@ class Item {
 
   get(itemId, region = this._options.region, locale = this._options.locale) {
     if (!itemId || isNaN(parseInt(itemId))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Item.Item(itemId);
   }
 
@@ -66,8 +65,7 @@ class Item {
 
   set(setId, region = this._options.region, locale = this._options.locale) {
     if (!setId || isNaN(parseInt(setId))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Item.ItemSet(setId);
   }
 }

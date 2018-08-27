@@ -46,8 +46,7 @@ class Pet {
    */
 
   list(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.MasterList();
   }
 
@@ -69,8 +68,7 @@ class Pet {
 
   abilities(abilityId, region = this._options.region, locale = this._options.locale) {
     if (!abilityId || isNaN(parseInt(abilityId))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.Abilities(abilityId);
   }
 
@@ -91,8 +89,7 @@ class Pet {
 
   species(speciesId, region = this._options.region, locale = this._options.locae) {
     if (!speciesId || isNaN(parseInt(speciesId))) return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.Species(speciesId);
   }
 
@@ -139,8 +136,7 @@ class Pet {
     ) {
       return undefined;
     }
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.Stats(speciesId, level, breedId, qualityId);
   }
 }

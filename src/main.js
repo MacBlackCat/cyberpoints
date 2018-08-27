@@ -1,9 +1,5 @@
 'use strict';
 
-if (process.version.slice(1).split('.')[0] < 10 && process.version.slice(1).split('.')[1] < 9) {
-  throw new Error('Please install Node.JS 10.9.0 or higher version.');
-}
-
 module.exports = {
   // mains
   Blizzard: {

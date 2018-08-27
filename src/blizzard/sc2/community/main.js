@@ -52,8 +52,7 @@ class Community {
 
   ledder(id, region = this._options.region, locale = this._options.locale) {
     if (!id || isNaN(parseInt(id))) return undefined;
-    const tristram = { region, locale, key: this._options.key };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Ledder(id);
   }
 }

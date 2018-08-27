@@ -46,8 +46,7 @@ class Resources {
    */
 
   battleGroups(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.BattleGroups();
   }
 
@@ -65,8 +64,7 @@ class Resources {
    */
 
   characterRaces(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.CharacterRaces();
   }
 
@@ -83,8 +81,7 @@ class Resources {
    */
 
   characterClasses(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.CharacterClasses();
   }
 
@@ -102,8 +99,7 @@ class Resources {
    */
 
   characterAchievements(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.CharacterAchievements();
   }
 
@@ -120,8 +116,7 @@ class Resources {
    */
 
   guildRewards(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.GuildRewards();
   }
 
@@ -138,8 +133,7 @@ class Resources {
    */
 
   guildPerks(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.GuildPerks();
   }
 
@@ -157,8 +151,7 @@ class Resources {
    */
 
   guildAchievements(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.GuildAchievements();
   }
 
@@ -175,8 +168,7 @@ class Resources {
    */
 
   itemClasses(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.ItemClasses();
   }
 
@@ -193,8 +185,7 @@ class Resources {
    */
 
   talents(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.Talents();
   }
 
@@ -211,8 +202,7 @@ class Resources {
    */
 
   petTypes(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Resources.PetTypes();
   }
 }

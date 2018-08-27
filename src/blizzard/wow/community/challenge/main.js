@@ -46,13 +46,12 @@ class Challenge {
    * @example
    * // If you want pass any optional parameter just type 'undefined'
    * .community.challenge.realm('silvermoon', undefined, 'en_US');
-   * @return {?String} API link for send an request
+   * @returns {?String} API link for send an request
    */
 
   realm(realmName, region = this._options.region, locale = this._options.locale) {
     if (!realmName || typeof realmName !== 'string') return undefined;
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Challenge.RealmLeaderBoard(realmName.toLowerCase());
   }
 
@@ -66,12 +65,11 @@ class Challenge {
    * @example
    * // If you want pass any optional parameter just type 'undefined'
    * .community.challenge.region(undefined, 'en_US');
-   * @return {?String} API link for send an request
+   * @returns {?String} API link for send an request
    */
 
   region(region = this._options.region, locale = this._options.locale) {
-    const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Challenge.RegionLeaderBorad();
   }
 }

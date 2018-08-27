@@ -47,8 +47,7 @@ class Era {
 
   index(token = this._options.token, region = this._options.region) {
     if (!token || typeof token !== 'string') return undefined;
-    const tristram = { region, token };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, token });
     return Endpoints.Data(nephalem).Era.Index();
   }
 
@@ -69,8 +68,7 @@ class Era {
     if (!id || !token || isNaN(parseInt(id)) || typeof token !== 'string') {
       return undefined;
     }
-    const tristram = { region, token };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, token });
     return Endpoints.Data(nephalem).Era.Era(id);
   }
 
@@ -99,8 +97,7 @@ class Era {
     ) {
       return undefined;
     }
-    const tristram = { region, token };
-    let nephalem = getRoot(tristram);
+    let nephalem = getRoot({ region, token });
     return Endpoints.Data(nephalem).Era.Leaderboard(id, leaderboard);
   }
 }

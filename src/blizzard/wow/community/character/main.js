@@ -54,17 +54,19 @@ class Character {
    */
 
   profile(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'profile';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Profile(realm.toLowerCase(), characterName, Fields);
+    let molten = ['profile'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Profile(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -81,17 +83,19 @@ class Character {
    */
 
   achievements(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'achievements';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Achievements(realm.toLowerCase(), characterName, Fields);
+    let molten = ['achievements'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Achievements(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -109,17 +113,19 @@ class Character {
    */
 
   appearance(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'appearance';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Appearance(realm.toLowerCase(), characterName, Fields);
+    let molten = ['appearance'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Appearance(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -136,17 +142,19 @@ class Character {
    */
 
   feed(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'feed';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Feed(realm.toLowerCase(), characterName, Fields);
+    const molten = ['feed'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Feed(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -171,17 +179,19 @@ class Character {
    */
 
   guild(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'guild';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Guild(realm.toLowerCase(), characterName, Fields);
+    let molten = ['guild'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Guild(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -198,17 +208,19 @@ class Character {
    */
 
   hunterPets(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'hunterPets';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.HunterPets(realm.toLowerCase(), characterName, Fields);
+    let molten = ['hunterPets'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.HunterPets(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -229,17 +241,19 @@ class Character {
    */
 
   items(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'items';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Items(realm.toLowerCase(), characterName, Fields);
+    let molten = ['items'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Items(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -256,17 +270,19 @@ class Character {
    */
 
   mounts(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'mounts';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Mounts(realm.toLowerCase(), characterName, Fields);
+    let molten = ['mounts'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Mounts(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -283,17 +299,19 @@ class Character {
    */
 
   pets(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'pets';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Pets(realm.toLowerCase(), characterName, Fields);
+    let molten = ['pets'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Pets(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -316,17 +334,19 @@ class Character {
    */
 
   petSlots(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'petSlots';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.PetStlots(realm.toLowerCase(), characterName, Fields);
+    let molten = ['petSlots'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.PetStlots(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -343,17 +363,19 @@ class Character {
    */
 
   professions(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'professions';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Professions(realm.toLowerCase(), characterName, Fields);
+    let molten = ['professions'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Professions(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -370,17 +392,19 @@ class Character {
    */
 
   progression(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'progression';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Progression(realm.toLowerCase(), characterName, Fields);
+    let molten = ['progression'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Progression(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -397,17 +421,19 @@ class Character {
    */
 
   pvp(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'pvp';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Pvp(realm.toLowerCase(), characterName, Fields);
+    let molten = ['pvp'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Pvp(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -424,17 +450,19 @@ class Character {
    */
 
   quests(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'quests';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Quests(realm.toLowerCase(), characterName, Fields);
+    let molten = ['quests'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Quests(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -451,17 +479,19 @@ class Character {
    */
 
   reputation(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'reputation';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Reputation(realm.toLowerCase(), characterName, Fields);
+    let molten = ['reputation'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Reputation(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -478,17 +508,19 @@ class Character {
    */
 
   statistics(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'statistics';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Statistics(realm.toLowerCase(), characterName, Fields);
+    let molten = ['statistics'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Statistics(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -505,17 +537,19 @@ class Character {
    */
 
   stats(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'stats';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Stats(realm.toLowerCase(), characterName, Fields);
+    let molten = ['stats'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Stats(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -532,17 +566,19 @@ class Character {
    */
 
   talents(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'talents';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Talents(realm.toLowerCase(), characterName, Fields);
+    let molten = ['talents'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Talents(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -559,17 +595,19 @@ class Character {
    */
 
   titles(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'titles';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Titles(realm.toLowerCase(), characterName, Fields);
+    let molten = ['titles'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Titles(realm.toLowerCase(), characterName, Fields.toString());
   }
 
   /**
@@ -586,17 +624,19 @@ class Character {
    */
 
   audit(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
-    if (!realm || !characterName || typeof realm !== 'string' || typeof characterName !== 'string') {
+    if (
+      !realm ||
+      !characterName ||
+      !(fields instanceof Array) ||
+      typeof realm !== 'string' ||
+      typeof characterName !== 'string'
+    ) {
       return undefined;
     }
-    const Fields = fields && fields.length ? fields.toString() : 'audit';
-    const molten = {
-      region,
-      locale,
-      key: this._options.key
-    };
-    let core = getRoot(molten);
-    return Endpoints.Community(core).Character.Audit(realm.toLowerCase(), characterName, Fields);
+    let molten = ['audit'];
+    const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
+    let core = getRoot({ region, locale, key: this._options.key });
+    return Endpoints.Community(core).Character.Audit(realm.toLowerCase(), characterName, Fields.toString());
   }
 }
 
