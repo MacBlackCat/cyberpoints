@@ -8,7 +8,7 @@
     <a href="https://discord.gg/fGPcybt"><img src="https://discordapp.com/api/guilds/483516135485210624/embed.png" alt="Discord server" /></a>
     <a href="https://www.npmjs.com/package/cyberpoints"><img src="https://img.shields.io/npm/v/cyberpoints.svg?maxAge=3600" alt="NPM version" /></a>
     <a href="https://www.npmjs.com/package/cyberpoints"><img src="https://img.shields.io/npm/dt/cyberpoints.svg?maxAge=3600" alt="NPM downloads" /></a>
-    <a href="https://www.codacy.com/project/kendinikertenkelebek/cyberpoints/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kendinikertenkelebek/cyberpoints&amp;utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/58c302f9bf2e4bc0be8915a4579423fa"/></a>
+    <a href="https://www.codacy.com/project/kendinikertenkelebek/cyberpoints/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kendinikertenkelebek/cyberpoints&amp;utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/94d13281601744a38cd43fb2b90a055e"/></a>
     <a href="https://github.com/kendinikertenkelebek/cyberpoints/issues"><img src="https://img.shields.io/github/issues/kendinikertenkelebek/cyberpoints.svg" alt="cyberpoints issues"></a>
     <a href="https://david-dm.org/kendinikertenkelebek/cyberpoints"><img src="https://david-dm.org/kendinikertenkelebek/cyberpoints/status.svg?maxAge=3600" alt="Dependencies" /></a>
   </p>
