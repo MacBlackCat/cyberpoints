@@ -2,6 +2,11 @@
 logs/
 *.log
 
+# Modules
+
+node_modules/
+yarn.lock
+
 # Miscellaneous
 .github/
 .vscode/
@@ -12,3 +17,5 @@ test/
 .gitattributes
 .gitignore
 .travis.yml
+.env
+.todo
