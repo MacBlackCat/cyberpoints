@@ -24,6 +24,22 @@
 cyberpoints was developing for CyberEngine. And now, she is **open source**! cyberpoints will generate endpoint links for make an request. All validation process is done by **cyberpoints**.
 If you're used correct values, returns an request link. otherwise returns 'undefined'. This method saves your request limits and time!
 
+### Endpoint Coverage
+
+- Blizzard
+
+  - World of Warcraft - 100%
+  - Diablo - 100%
+  - StarCraft - 100%
+  - Outh - 100%
+
+### Why?
+
+- Object-oriented
+- Speedy and efficient
+- Feature-rich
+- Flexible
+
 ### Installation
 
 _cyberpoints_ requires [Node.js](https://nodejs.org/dist/latest) latest version to run.
@@ -56,6 +72,22 @@ console.log(blizzard.sc2.community.ledder())
 console.log(blizzard.diablo.community.skill())
 console.log(blizzard.outh2.user())
 ```
+
+### To-Do's
+
+- Riot Games
+
+  - League of Legends
+
+- PUBG
+
+- Fortnite
+
+- Steam
+
+- Twitch
+
+- Youtube
 
 ### Technology
 
