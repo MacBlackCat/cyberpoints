@@ -2,7 +2,7 @@
 
 class LeagueOfLegends {
   constructor(options) {
-    console.log(options);
+    console.log(options); // eslint-disable-line no-console
   }
 }
 
