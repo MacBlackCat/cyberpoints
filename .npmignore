@@ -1,21 +1,24 @@
-# Log files
+## Log Files
 logs/
 *.log
-
-# Modules
-
-node_modules/
 yarn.lock
+package-lock.json
+
+## Modules
+node_modules/
 
 # Miscellaneous
 .github/
+.gitlab/
 .vscode/
 test/
+private/
 
-# NPM ignore
+## NPM Ignore
+.DS_Store
 .eslintrc
 .gitattributes
 .gitignore
+.npmrc
 .travis.yml
 .env
-.todo

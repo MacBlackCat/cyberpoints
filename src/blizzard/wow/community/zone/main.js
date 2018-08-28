@@ -39,16 +39,17 @@ class Zone {
    * A 'boss' in this context should be considered a boss encounter,
    * which may include more than one NPC.
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .list('us', 'en_US');
+   * .list({ region: 'us', locale: 'en_US' });
    * // or
    * .list();
    * @returns {?String} API link for send an request
    */
 
-  list(region = this._options.region, locale = this._options.locale) {
+  list({ region = this._options.region, locale = this._options.locale } = {}) {
     const molten = { region, locale, key: this._options.key };
     let core = getRoot(molten);
     return Endpoints.Community(core).Zone.MasterList();
@@ -57,17 +58,18 @@ class Zone {
   /**
    * The Zone API provides some information about zones.
    *
-   * @param {String|Number} zoneId The ID of the zone you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.zoneId The ID of the zone you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .get('4131', 'us', 'en_US');
+   * .get({ zoneId: '4131', region: 'us', locale: 'en_US' });
    * // or
-   * .get(4131);
+   * .get({ zoneId: 4131 });
    * @returns {?String} API link for send an request
    */
 
-  get(zoneId, region = this._options.region, locale = this._options.locale) {
+  get({ zoneId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!zoneId || isNaN(parseInt(zoneId))) return undefined;
     const molten = { region, locale, key: this._options.key };
     let core = getRoot(molten);

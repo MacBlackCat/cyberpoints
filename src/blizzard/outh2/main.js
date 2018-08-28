@@ -40,16 +40,17 @@ class Outh2 {
   /**
    * Returns the account information of a user
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .user('CLIENT_TOKEN', 'eu');
+   * .user({ token: 'CLIENT_TOKEN', region: 'eu' });
    * // or
    * .user();
    * @returns {?String} API link for send an request
    */
 
-  user(token = this._options.token, region = this._options.region) {
+  user({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let conn = getRoot({ region, token });
     return Endpoints.Community(conn).Account();

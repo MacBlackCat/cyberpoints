@@ -36,16 +36,17 @@ class Data {
   /**
    * This provides data about the achievements available in SC2.
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .achievements('us', 'en_US');
+   * .achievements({ region: 'us', locale: 'en_US' });
    * // or
    * .achievements();
    * @returns {?String} API link for send an request
    */
 
-  achievements(region = this._options.region, locale = this._options.locale) {
+  achievements({ region = this._options.region, locale = this._options.locale } = {}) {
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Resources.Achievements();
   }
@@ -53,16 +54,17 @@ class Data {
   /**
    * This provides data about the rewards available in SC2.
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .rewards('us', 'en_US');
+   * .rewards({ region: 'us', locale: 'en_US' });
    * // or
    * .rewards();
    * @returns {?String} API link for send an request
    */
 
-  rewards(region = this._options.region, locale = this._options.locale) {
+  rewards({ region = this._options.region, locale = this._options.locale } = {}) {
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Resources.Rewards();
   }

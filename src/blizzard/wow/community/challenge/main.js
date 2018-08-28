@@ -40,16 +40,18 @@ class Challenge {
    * The character data includes the current cached spec of the character
    * while the member field includes the spec of the character during the challenge mode run.
    *
-   * @param {String} realmName The realm being requested.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realmName The realm being requested.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * // If you want pass any optional parameter just type 'undefined'
-   * .community.challenge.realm('silvermoon', undefined, 'en_US');
+   * .realm({ realmName: 'silvermoon', region: 'us', locale:'en_US' });
+   * // or
+   * .realm({ realmName: 'silvermoon' });
    * @returns {?String} API link for send an request
    */
 
-  realm(realmName, region = this._options.region, locale = this._options.locale) {
+  realm({ realmName, region = this._options.region, locale = this._options.locale } = {}) {
     if (!realmName || typeof realmName !== 'string') return undefined;
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Challenge.RealmLeaderBoard(realmName.toLowerCase());
@@ -60,15 +62,17 @@ class Challenge {
    * except there is no realm field. It is simply the top 100 results gathered
    * for each map for all of the available realm leaderboards in a region.
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * // If you want pass any optional parameter just type 'undefined'
-   * .community.challenge.region(undefined, 'en_US');
+   * .region({ region: 'us', locale: 'en_US' });
+   * // or
+   * .region();
    * @returns {?String} API link for send an request
    */
 
-  region(region = this._options.region, locale = this._options.locale) {
+  region({ region = this._options.region, locale = this._options.locale } = {}) {
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Challenge.RegionLeaderBorad();
   }

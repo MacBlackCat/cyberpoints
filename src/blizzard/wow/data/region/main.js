@@ -36,19 +36,20 @@ class Region {
   /**
    * Get an index of regions
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .index('CLIENT_TOKEN', 'eu', 'en_GB');
+   * .index({ token: 'CLIENT_TOKEN', region: 'eu', locale: 'en_GB' });
    * // or
-   * .index('CLIENT_TOKEN');
+   * .index({ token: 'CLIENT_TOKEN' });
    * // or
    * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  index({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).Region.Index();
@@ -57,20 +58,21 @@ class Region {
   /**
    * Get a single region by id
    *
-   * @param {String|Number} regionId The id of the region.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.regionId The id of the region.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .get('3', 'CLIENT_TOKEN', 'eu', 'en_GB');
+   * .get({ regionId: '3', token: 'CLIENT_TOKEN', region: 'eu', locale: 'en_GB' });
    * // or
-   * .get(3, 'CLIENT_TOKEN');
+   * .get({ regionId: 3, token: 'CLIENT_TOKEN' });
    * // or
-   * .get('3');
+   * .get({ regionId: '3' });
    * @returns {?String} API link for send an request
    */
 
-  get(regionId, token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  get({ regionId, token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!regionId || !token || isNaN(parseInt(regionId)) || typeof token !== 'string') {
       return undefined;
     }

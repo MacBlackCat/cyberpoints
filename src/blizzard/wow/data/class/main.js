@@ -36,19 +36,20 @@ class Class {
   /**
    * Get an index of playable classes
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .index('CLIENT_TOKEN', 'us', 'en_US');
+   * .index({ token: 'CLIENT_TOKEN', region: 'us', locale: 'en_US' });
    * // or
-   * .index('CLIENT_TOKEN')
+   * .index({ token: 'CLIENT_TOKEN' })
    * // or
    * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  index({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).PlayableClass.Index();
@@ -57,20 +58,21 @@ class Class {
   /**
    * Get a playable class by id
    *
-   * @param {String|Number} classId The id of a playable class
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.classId The id of a playable class
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .get('7', 'CLIENT_TOKEN', 'us', 'en_US');
+   * .get({ classId: '7', token: 'CLIENT_TOKEN', region: 'us', locale: 'en_US' });
    * // or
-   * .get(7, 'CLIENT_TOKEN');
+   * .get({ classId: 7, token: 'CLIENT_TOKEN' });
    * // or
-   * .get('7')
+   * .get({ classId: '7' })
    * @returns {?String} API link for send an request
    */
 
-  get(classId, token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  get({ classId, token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!classId || !token || isNaN(parseInt(classId)) || typeof token !== 'string') {
       return undefined;
     }

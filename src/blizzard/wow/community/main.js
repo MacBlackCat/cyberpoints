@@ -53,17 +53,18 @@ class Community {
   /**
    * This provides data about an individual achievement.
    *
-   * @param {String|Number} id The ID of the achievement to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The ID of the achievement to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .achievement('2144', 'us', 'en_US');
+   * .achievement({ id: '2144', region: 'us', locale: 'en_US' });
    * // or
-   * .achievement(2144);
+   * .achievement({ id: 2144 });
    * @returns {?String} API link for send an request
    */
 
-  achievement(id, region = this._options.region, locale = this._options.locale) {
+  achievement({ id, region = this._options.region, locale = this._options.locale } = {}) {
     if (!id || isNaN(parseInt(id))) return undefined;
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Achievement(id);
@@ -80,17 +81,18 @@ class Community {
    * This API resource provides a per-realm list of recently generated auction
    * house data dumps.
    *
-   * @param {String} realm The realm being requested.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The realm being requested.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .auction('medivh', 'us', 'en_US');
+   * .auction({ realm: 'medivh', region: 'us', locale: 'en_US' });
    * // or
-   * .auction('medivh');
+   * .auction({ realm: 'medivh' });
    * @returns {?String} API link for send an request
    */
 
-  auction(realm, region = this._options.region, locale = this._options.locale) {
+  auction({ realm, region = this._options.region, locale = this._options.locale } = {}) {
     if (!realm || typeof realm !== 'string') return undefined;
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Auction(realm.toLocaleLowerCase());
@@ -101,16 +103,17 @@ class Community {
   /**
    * A list of all supported mounts.
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .mount('us', 'en_US');
+   * .mount({ region: 'us', locale: 'en_US' });
    * // or
    * .mount();
    * @returns {?String} API link for send an request
    */
 
-  mount(region = this._options.region, locale = this._options.locale) {
+  mount({ region = this._options.region, locale = this._options.locale } = {}) {
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Mount();
   }
@@ -121,18 +124,19 @@ class Community {
    * The Leaderboard API endpoint provides leaderboard information
    * for the 2v2, 3v3, 5v5 and Rated Battleground leaderboards.
    *
-   * @param {String} bracket The type of leaderboard you want to retrieve.
+   * @param {Object} args Request arguments.
+   * @param {String} args.bracket The type of leaderboard you want to retrieve.
    * Valid entries are `2v2`, `3v3`, `5v5`, and `rbg`.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .pvp('2v2', 'us', 'en_US');
+   * .pvp({ bracket: '2v2', region: 'us', locale: 'en_US' });
    * // or
-   * .pvp('rbg');
+   * .pvp({ bracket: 'rbg' });
    * @returns {?String} API link for send an request
    */
 
-  pvp(bracket, region = this._options.region, locale = this._options.locale) {
+  pvp({ bracket, region = this._options.region, locale = this._options.locale } = {}) {
     if (!bracket || typeof bracket !== 'string' || !Brackets.includes(bracket)) {
       return undefined;
     }
@@ -145,17 +149,18 @@ class Community {
   /**
    * Retrieve metadata for a given quest.
    *
-   * @param {String|Number} questId The ID of the desired quest.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.questId The ID of the desired quest.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .quest('13146', 'us', 'en_US');
+   * .quest({ questId: '13146', region: 'us', locale: 'en_US' });
    * // or
-   * .quest(13146);
+   * .quest({ questId: 13146 });
    * @returns {?String} API link for send an request
    */
 
-  quest(questId, region = this._options.region, locale = this._options.locale) {
+  quest({ questId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!questId || isNaN(parseInt(questId))) return undefined;
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Quest(questId);
@@ -188,16 +193,17 @@ class Community {
    *  - `3`: Concluded
    * - `next` - A timestamp of when the next battle starts.
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .reamlStatus('us', 'en_US');
+   * .reamlStatus({ region: 'us', locale: 'en_US' });
    * // or
    * .reamlStatus();
    * @returns {?String} API link for send an request
    */
 
-  reamlStatus(region = this._options.region, locale = this._options.locale) {
+  reamlStatus({ region = this._options.region, locale = this._options.locale } = {}) {
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).RealmStatus();
   }
@@ -207,17 +213,18 @@ class Community {
   /**
    * The recipe API provides basic recipe information.
    *
-   * @param {String|Number} recipeId Unique ID for the desired recipe.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.recipeId Unique ID for the desired recipe.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .recipe('33994', 'us', 'en_US');
+   * .recipe({ recipeId: '33994', region: 'us', locale: 'en_US' });
    * // or
-   * .recipe(33994);
+   * .recipe({ recipeId: 33994 });
    * @returns {?String} API link for send an request
    */
 
-  recipe(recipeId, region = this._options.region, locale = this._options.locale) {
+  recipe({ recipeId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!recipeId || isNaN(parseInt(recipeId))) return undefined;
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Recipe(recipeId);
@@ -228,17 +235,18 @@ class Community {
   /**
    * The spell API provides some information about spells.
    *
-   * @param {String|Number} spellId The ID of the spell you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.spellId The ID of the spell you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .spell('8056', 'us', 'en_US');
+   * .spell({ spellId: '8056', region: 'us', locale: 'en_US' });
    * // or
-   * .spell(8056);
+   * .spell({ spellId: 8056 });
    * @returns {?String} API link for send an request
    */
 
-  spell(spellId, region = this._options.region, locale = this._options.locale) {
+  spell({ spellId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!spellId || isNaN(parseInt(spellId))) return undefined;
     let core = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Spell(spellId);

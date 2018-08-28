@@ -38,16 +38,17 @@ class Profile {
   /**
    * This provides data about the current logged in OAuth user's Sc2 profile.
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .sc2('CLIENT_TOKEN', 'eu');
+   * .sc2({ token: 'CLIENT_TOKEN', region: 'eu' });
    * // or
    * .sc2();
    * @returns {?String} API link for send an request
    */
 
-  sc2(token = this._options.token, region = this._options.region) {
+  sc2({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let conn = getRoot({ region, token });
     return Endpoints.Community(conn).Profile.SC2();
@@ -56,16 +57,17 @@ class Profile {
   /**
    * This provides data about the current logged in OAuth user's WoW profile.
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .wow('CLIENT_TOKEN', 'eu');
+   * .wow({ token: 'CLIENT_TOKEN', region: 'eu' });
    * // or
    * .wow();
    * @returns {?String} API link for send an request
    */
 
-  wow(token = this._options.token, region = this._options.region) {
+  wow({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let conn = getRoot({ region, token });
     return Endpoints.Community(conn).Profile.WOW();

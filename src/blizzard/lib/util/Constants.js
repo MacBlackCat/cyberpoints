@@ -58,7 +58,7 @@ exports.Token = {
       throw new TypeError('INVALID_ACCESS_SETTINGS', 'key', 'API key Invalid');
     }
     if (!given.secret || typeof given.secret !== 'string') {
-      throw new TypeError('INVALID_ACCESS_SETTINGS', 'token', 'API Access Token Invalid');
+      throw new TypeError('INVALID_ACCESS_SETTINGS', 'secret', 'API Client Secret Invalid');
     }
     return Util._mergeDefault(Def, given);
   }

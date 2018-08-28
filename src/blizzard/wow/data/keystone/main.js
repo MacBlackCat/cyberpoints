@@ -36,20 +36,26 @@ class Keystone {
   /**
    * Get an index of Mythic Keystone Leaderboard dungeon instances for a connected-realm
    *
-   * @param {String|Number} connectedReamId The id of the connected realm.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.connectedReamId The id of the connected realm.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .index('11', 'CLIENT_TOKEN','us', 'en_US');
+   * .index({ connectedReamId: '11', token: 'CLIENT_TOKEN', region: 'us', locale: 'en_US' });
    * // or
-   * .index(11, 'CLIENT_TOKEN')
+   * .index({ connectedReamId: 11, token: 'CLIENT_TOKEN' })
    * // or
-   * .index('11');
+   * .index({ connectedReamId: '11' });
    * @returns {?String} API link for send an request
    */
 
-  index(connectedReamId, token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  index({
+    connectedReamId,
+    token = this._options.token,
+    region = this._options.region,
+    locale = this._options.locale
+  } = {}) {
     if (!connectedReamId || !token || isNaN(parseInt(connectedReamId)) || typeof token !== 'string') {
       return undefined;
     }
@@ -60,29 +66,28 @@ class Keystone {
   /**
    * Get a weekly Mythic Keystone Leaderboard by period
    *
-   * @param {String|Number} connectedReamId The id of the connected realm.
-   * @param {String|Number} dungeonId The id of the dungeon.
-   * @param {String|Number} period The unique identifier for the leaderboard period.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.connectedReamId The id of the connected realm.
+   * @param {String|Number} args.dungeonId The id of the dungeon.
+   * @param {String|Number} args.period The unique identifier for the leaderboard period.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .leaderboard(11, '197', 641, 'CLIENT_TOKEN', 'us', 'en_US');
+   * .leaderboard({ connectedRealmId: 11, dungeonId: '197', period: 641, token: 'CLIENT_TOKEN' });
    * // or
-   * .leaderboard(11, '197', 641, 'CLIENT_TOKEN');
-   * // or
-   * .leaderboard('11', 197, '641');
+   * .leaderboard({ connectedRealmId: '11', dungeonId: 197, period: '641' });
    * @returns {?String} API link for send an request
    */
 
-  leaderboard(
+  leaderboard({
     connectedRalmId,
     dungeonId,
     period,
     token = this._options.token,
     region = this._options.region,
     locale = this._options.locale
-  ) {
+  } = {}) {
     if (
       !connectedRalmId ||
       !dungeonId ||

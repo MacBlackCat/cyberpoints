@@ -50,19 +50,20 @@ class Data {
    * Get current period information about the Mythic Challenge Mode relevant
    * to Mythic Keystone Leaderboards
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .challenge('CLIENT_TOKEN', 'kr', 'en_GB');
+   * .challenge({ token: 'CLIENT_TOKEN', region: 'kr', locale: 'en_GB' });
    * // or
-   * .challenge('CLIENT_TOKEN')
+   * .challenge({ token: 'CLIENT_TOKEN' });
    * // or
    * .challenge();
    * @returns {?String} API link for send an request
    */
 
-  challenge(token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  challenge({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).MythicChallenge();
@@ -73,19 +74,20 @@ class Data {
   /**
    * Get the WoW Token index
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .token('CLIENT_TOKEN', 'kr', 'en_GB');
+   * .token({ token: 'CLIENT_TOKEN', region: 'kr', locale: 'en_GB' });
    * // or
-   * .token('CLIENT_TOKEN');
+   * .token({ token: 'CLIENT_TOKEN' });
    * // or
    * .token();
    * @returns {?String} API link for send an request
    */
 
-  token(token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  token({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).Token();

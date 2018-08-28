@@ -40,17 +40,18 @@ class Community {
   /**
    * This provides data about an SC2 ladder.
    *
-   * @param {String|Number} id The ID of the ladder to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request argumants.
+   * @param {String|Number} args.id The ID of the ladder to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .ledder('655', 'us', 'en_US');
+   * .ledder({ id: '655', region: 'us', locale: 'en_US' });
    * // or
-   * .ledder(655);
+   * .ledder({ id: 655 });
    * @returns {?String} API link for send an request
    */
 
-  ledder(id, region = this._options.region, locale = this._options.locale) {
+  ledder({ id, region = this._options.region, locale = this._options.locale } = {}) {
     if (!id || isNaN(parseInt(id))) return undefined;
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Ledder(id);

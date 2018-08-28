@@ -36,19 +36,20 @@ class ConnectedRealm {
   /**
    * Get an index of connected-realms
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .index('CLIENT_TOKEN', 'us', 'en_US');
+   * .index({ token: 'CLIENT_TOKEN', region: 'us', locale: 'en_US' });
    * // or
-   * .index('CLIENT_TOKEN');
+   * .index({ token: 'CLIENT_TOKEN' });
    * // or
    * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  index({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).ConnectedRealm.Index();
@@ -57,25 +58,31 @@ class ConnectedRealm {
   /**
    * Get a single connected-realm by id
    *
-   * @param {String|Number} connectedRalmId The id of the connected realm.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.connectedRealmId The id of the connected realm.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .get(509, 'CLIENT_TOKEN', 'us', 'en_US');
+   * .get({ connectedRealmId: 509, token: 'CLIENT_TOKEN', region: 'us', locale: 'en_US' });
    * // or
-   * .get('509', 'CLIENT_TOKEN')
+   * .get({ connectedRealmId: '509', token: 'CLIENT_TOKEN' })
    * // or
-   * .get(509);
+   * .get({ connectedRealmId: 509 });
    * @returns {?String} API link for send an request
    */
 
-  get(connectedRalmId, token = this._options.token, region = this._options.region, locale = this._options.locale) {
-    if (!connectedRalmId || !token || isNaN(parseInt(connectedRalmId)) || typeof token !== 'string') {
+  get({
+    connectedRealmId,
+    token = this._options.token,
+    region = this._options.region,
+    locale = this._options.locale
+  } = {}) {
+    if (!connectedRealmId || !token || isNaN(parseInt(connectedRealmId)) || typeof token !== 'string') {
       return undefined;
     }
     let core = getRoot({ region, locale, token });
-    return Endpoints.Data(core).ConnectedRealm.ConnectedRealm(connectedRalmId);
+    return Endpoints.Data(core).ConnectedRealm.ConnectedRealm(connectedRealmId);
   }
 }
 

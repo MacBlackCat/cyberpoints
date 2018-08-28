@@ -36,19 +36,20 @@ class Realm {
   /**
    * Get an index of realms
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .index('CLIENT_TOKEN','eu', 'en_GB');
+   * .index({ token: 'CLIENT_TOKEN', region: 'eu', locale: 'en_GB' });
    * // or
-   * .index('CLIENT_TOKEN');
+   * .index({ token: 'CLIENT_TOKEN' });
    * // or
    * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  index({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let core = getRoot({ region, locale, token });
     return Endpoints.Data(core).Realm.Index();
@@ -57,20 +58,21 @@ class Realm {
   /**
    * Get an index of realms
    *
-   * @param {String} realmSlug The slug of the realm.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realmSlug The slug of the realm.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .get('tichondrius', 'CLIENT_TOKEN', 'eu', 'en_GB');
+   * .get({ realmSlug: 'tichondrius', token: 'CLIENT_TOKEN', region: 'eu', locale: 'en_GB' });
    * // or
-   * .get('tichondrius', 'CLIENT_TOKEN');
+   * .get({ realmSlug: 'tichondrius', token: 'CLIENT_TOKEN' });
    * // or
-   * get('tichondrius');
+   * get({ realmSlug: 'tichondrius' });
    * @returns {?String} API link for send an request
    */
 
-  get(realmSlug, token = this._options.token, region = this._options.region, locale = this._options.locale) {
+  get({ realmSlug, token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!realmSlug || !token || typeof realmSlug !== 'string' || typeof token !== 'string') {
       return undefined;
     }

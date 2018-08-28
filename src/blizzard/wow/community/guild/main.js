@@ -45,20 +45,24 @@ class Guild {
    * that one or more of the optional datasets is to be retrieved. Those additional
    * fields are listed in the method titled "Optional Fields".
    *
-   * @param {String} realm The realm the guild lives on.
-   * @param {String} guildName Name of the guild being queried.
-   * @param {Array} [fields=achievements,challenge] The optional data you want to
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The realm the guild lives on.
+   * @param {String} args.guildName Name of the guild being queried.
+   * @param {Array} [args.fields=achievements,challenge] The optional data you want to
    * retrieve about the guild. Each field value is explained in more detail in the
    * following methods. If no fields are specified the API will only return basic
    * data about the guild.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [arrgs.locale=en_GB] What locale to use in the response.
    * @example
-   * .profile('Medivh', 'TempGuildName', ['achievements', 'members']);
+   * .profile({ realm: 'Medivh', guildName: 'TempGuildName' });
+   * // returns just achievements and members.
+   * .profile({ realm: 'Medivh', guildName: 'TempGuildName', fields: ['achievements', 'members'] });
+   * // returns with 'achievements and members' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  profile(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
+  profile({ realm, guildName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !guildName ||
@@ -79,17 +83,22 @@ class Guild {
    * list is requested, a list of character objects is returned. Each object
    * in the returned members list contains a character block as well as a rank field.
    *
-   * @param {String} realm The realm the guild lives on.
-   * @param {String} guildName Name of the guild being queried.
-   * @param {Array} [fields=members] A value of members tells the API to include guild's `member` list in the response.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The realm the guild lives on.
+   * @param {String} args.guildName Name of the guild being queried.
+   * @param {Array} [args.fields=members] A value of members tells the API
+   * to include guild's `member` list in the response.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .members('Medivh', 'TempGuildName', ['members', 'news']);
+   * .members({ realm: 'Medivh', guildName: 'TempGuildName' });
+   * // returns just members.
+   * .members({ realm: 'Medivh', guildName: 'TempGuildName', fields: ['challange', 'news'] });
+   * // returns with 'members' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  members(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
+  members({ realm, guildName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !guildName ||
@@ -122,18 +131,22 @@ class Guild {
    * - `criteriaCreated` - A list of timestamps where the value represents when the criteria was
    *    considered started. The position of a value corresponds to the position of a given achievement criteria.
    *
-   * @param {String} realm The realm the guild lives on.
-   * @param {String} guildName Name of the guild being queried.
-   * @param {Array} [fields=achievements] A value of `achievements` tells the API to include
-   * the guild's achievement data in the response
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The realm the guild lives on.
+   * @param {String} args.guildName Name of the guild being queried.
+   * @param {Array} [args.fields=achievements] A value of `achievements` tells the API
+   * to include the guild's achievement data in the response
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .achievements('Medivh', 'TempGuildName', ['members', 'news']);
+   * .achievements({ realm: 'Medivh', guildName: 'TempGuildName' });
+   * // returns just achievements.
+   * .achievements({ realm: 'Medivh', guildName: 'TempGuildName', fields: ['members', 'news'] });
+   * // returns with 'achievements' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  achievements(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
+  achievements({ realm, guildName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !guildName ||
@@ -155,18 +168,22 @@ class Guild {
    * Each one has a type, a timestamp, and then some other data depending
    * on the type: `itemId`, `achievement` object, etc.
    *
-   * @param {String} realm The realm the guild lives on.
-   * @param {String} guildName Name of the guild being queried.
-   * @param {Array} [fields=news] A value of `news` tells the API
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The realm the guild lives on.
+   * @param {String} args.guildName Name of the guild being queried.
+   * @param {Array} [args.fields=news] A value of `news` tells the API
    * to include the guild's news feed in the response.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .news('Medivh', 'TempGuildName', ['news', 'members']);
+   * .news({ realm: 'Medivh', guildName: 'TempGuildName' });
+   * // returns just news.
+   * .news({ realm: 'Medivh', guildName: 'TempGuildName', fields: ['challenge', 'members'] });
+   * // returns with 'news' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  news(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
+  news({ realm, guildName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !guildName ||
@@ -185,18 +202,22 @@ class Guild {
   /**
    * The top 3 challenge mode guild run times for each challenge mode map.
    *
-   * @param {String} realm The realm the guild lives on.
-   * @param {String} guildName Name of the guild being queried.
-   * @param {Array} [fields=challenge] A value of `challenge` tells the API
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The realm the guild lives on.
+   * @param {String} args.guildName Name of the guild being queried.
+   * @param {Array} [args.fields=challenge] A value of `challenge` tells the API
    * to include the guild's Challenge Mode data in the response.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .challenge('Medivh', 'TempGuildName', ['challenge', 'news']);
+   * .challenge({ realm: 'Medivh', guildName: 'TempGuildName' });
+   * // returns just challenge.
+   * .challenge({ realm: 'Medivh', guildName: 'TempGuildName', fields: ['members', 'news'] });
+   * // returns with 'challenge' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  challenge(realm, guildName, fields, region = this._options.region, locale = this._options.locale) {
+  challenge({ realm, guildName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !guildName ||

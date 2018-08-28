@@ -36,19 +36,20 @@ class Profile {
   /**
    * This provides data about an individual SC2 profile.
    *
-   * @param {String|Number} id The ID of the profile to retrieve.
-   * @param {String} profileRegion The region of the profile to retrieve.
-   * @param {String} name The name of the profile to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The ID of the profile to retrieve.
+   * @param {String} args.profileRegion The region of the profile to retrieve.
+   * @param {String} args.name The name of the profile to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .get('00', '1', 'sc2gamer', 'us', 'en_US');
+   * .get({ id: '00', profileRegion: '1', name: 'sc2gamer', region: 'us', locale: 'en_US' });
    * // or
-   * .get(00, '1', 'sc2gamer');
+   * .get({ id: 00, progileRegion: '1', name: 'sc2gamer' });
    * @returns {?String} API link for send an request
    */
 
-  get(id, profileRegion, name, region = this._options.region, locale = this._options.locale) {
+  get({ id, profileRegion, name, region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !id ||
       !profileRegion ||
@@ -66,19 +67,20 @@ class Profile {
   /**
    * This provides data about an individual SC2 profile's ladders.
    *
-   * @param {String|Number} id The ID of the profile to retrieve.
-   * @param {String} profileRegion The region of the profile to retrieve.
-   * @param {String} name The name of the profile to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The ID of the profile to retrieve.
+   * @param {String} args.profileRegion The region of the profile to retrieve.
+   * @param {String} args.name The name of the profile to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .ledders('00', '1', 'sc2gamer', 'us', 'en_US');
+   * .ledders({ id: '00', profileRegion: '1', name: 'sc2gamer', region: 'us', locale: 'en_US' });
    * // or
-   * .ledders(00, '1', 'sc2gamer');
+   * .ledders({ id: 00, profileRegion: '1', name: 'sc2gamer' });
    * @returns {?String} API link for send an request
    */
 
-  ledders(id, profileRegion, name, region = this._options.region, locale = this._options.locale) {
+  ledders({ id, profileRegion, name, region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !id ||
       !profileRegion ||
@@ -96,19 +98,20 @@ class Profile {
   /**
    * This provides data about an individual SC2 profile's match history.
    *
-   * @param {String|Number} id The ID of the profile to retrieve.
-   * @param {String} profileRegion The region of the profile to retrieve.
-   * @param {String} name The name of the profile to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The ID of the profile to retrieve.
+   * @param {String} args.profileRegion The region of the profile to retrieve.
+   * @param {String} args.name The name of the profile to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .match('00', '1', 'sc2gamer', 'us', 'en_US');
+   * .match({ id: '00', profileRegion: '1', name: 'sc2gamer', region: 'us', locale: 'en_US' });
    * // or
-   * .match(00, '1', 'sc2gamer');
+   * .match({ id: 00, profileRegion: '1', name: 'sc2gamer' });
    * @returns {?String} API link for send an request
    */
 
-  match(id, profileRegion, name, region = this._options.region, locale = this._options.locale) {
+  match({ id, profileRegion, name, region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !id ||
       !profileRegion ||

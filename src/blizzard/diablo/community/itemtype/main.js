@@ -36,16 +36,17 @@ class ItemType {
   /**
    * Get an index of item types
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .index('us', 'en_US');
+   * .index({ region: 'us', locale: 'en_US' });
    * // or
    * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(region = this._options.region, locale = this._options.locale) {
+  index({ region = this._options.region, locale = this._options.locale } = {}) {
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).ItemType.Index();
   }
@@ -53,17 +54,18 @@ class ItemType {
   /**
    * Get a single item type by slug
    *
-   * @param {String} itemTypeSlug The slug of the item type
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} args.itemTypeSlug The slug of the item type
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .get('sword2h', 'us', 'en_US');
+   * .get({ itemTypeSlug: 'sword2h', region: 'us', locale: 'en_US' });
    * // or
-   * .get('sword2h');
+   * .get({ itemTypeSlug: 'sword2h' });
    * @returns {?String} API link for send an request
    */
 
-  get(itemTypeSlug, region = this._options.region, locale = this._options.locale) {
+  get({ itemTypeSlug, region = this._options.region, locale = this._options.locale } = {}) {
     if (!itemTypeSlug || typeof itemTypeSlug !== 'string') return undefined;
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).ItemType.ItemType(itemTypeSlug);

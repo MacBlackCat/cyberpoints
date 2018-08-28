@@ -36,16 +36,17 @@ class Act {
   /**
    * Get an index of acts
    *
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .index('us', 'en_US');
+   * .index({ region: 'us', locale: 'en_US' });
    * // or
    * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(region = this._options.region, locale = this._options.locale) {
+  index({ region = this._options.region, locale = this._options.locale } = {}) {
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Act.Index();
   }
@@ -53,17 +54,18 @@ class Act {
   /**
    * Get a single act by id
    *
-   * @param {String|Numer} actId The id of the act.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String|Numer} args.actId The id of the act.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .get('1', 'us', 'en_US');
+   * .get({ actId: '1', region: 'us', locale: 'en_US' });
    * // or
-   * .get(1);
+   * .get({ actId: 1 });
    * @returns {?String} API link for send an request
    */
 
-  get(actId, region = this._options.region, locale = this._options.locale) {
+  get({ actId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!actId || isNaN(parseInt(actId))) return undefined;
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Act.Act(actId);

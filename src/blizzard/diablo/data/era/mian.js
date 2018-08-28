@@ -36,16 +36,19 @@ class Era {
   /**
    * Returns base information about available eras
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .index('eu', 'CLIENT_TOKEN');
+   * .index({ token: 'CLIENT_TOKEN', region: 'eu' });
    * // or
-   * .index('eu');
+   * .index({ token: 'CLIENT_TOKEN' });
+   * // or
+   * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(token = this._options.token, region = this._options.region) {
+  index({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let nephalem = getRoot({ region, token });
     return Endpoints.Data(nephalem).Era.Index();
@@ -54,17 +57,18 @@ class Era {
   /**
    * Returns a leaderboard list for a particular era
    *
-   * @param {String|Number} id The era to lookup.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The era to lookup.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .get('1', 'CLIENT_TOKEN');
+   * .get({ id: '1', token: 'CLIENT_TOKEN' });
    * // or
-   * .get(1);
+   * .get({ id: 1 });
    * @returns {?String} API link for send an request
    */
 
-  get(id, token = this._options.token, region = this._options.region) {
+  get({ id, token = this._options.token, region = this._options.region } = {}) {
     if (!id || !token || isNaN(parseInt(id)) || typeof token !== 'string') {
       return undefined;
     }
@@ -75,18 +79,19 @@ class Era {
   /**
    * Returns a leaderboard list for a particular era
    *
-   * @param {String|Number} id The era to lookup.
-   * @param {String} leaderboard The leaderboard to lookup, you can find these strings in the Era API call
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The era to lookup.
+   * @param {String} args.leaderboard The leaderboard to lookup, you can find these strings in the Era API call
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .get('1', 'rift-barbarian', 'CLIENT_TOKEN', 'us');
+   * .get({ id: '1', leaderboard: 'rift-barbarian', token: 'CLIENT_TOKEN', region: 'us' });
    * // or
-   * .get(1, 'rift-barbarian');
+   * .get({ id: 1, leaderboard: 'rift-barbarian' });
    * @returns {?String} API link for send an request
    */
 
-  leaderboard(id, leaderboard, token = this._options.token, region = this._options.region) {
+  leaderboard({ id, leaderboard, token = this._options.token, region = this._options.region } = {}) {
     if (
       !id ||
       !leaderboard ||

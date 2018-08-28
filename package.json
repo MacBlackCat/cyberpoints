@@ -1,6 +1,6 @@
 {
   "name": "cyberpoints",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Who is want to connect an API?",
   "main": "./src/main.js",
   "scripts": {
@@ -15,11 +15,19 @@
     "warcraft",
     "blizzard.net",
     "riot",
-    "league of legends"
+    "league of legends",
+    "battlenet",
+    "battle.net",
+    "bnet",
+    "api",
+    "starcraft",
+    "sc2",
+    "diablo",
+    "d3"
   ],
   "devDependencies": {
-    "eslint": "^4.18.0",
-    "@types/node": "^10.5.5"
+    "eslint": "^5.4.0",
+    "@types/node": "^10.9.2"
   },
   "os": [
     "darwin",
@@ -27,8 +35,7 @@
     "win64"
   ],
   "engines": {
-    "node": ">=10.9.0",
-    "npm": ">=6.4.0"
+    "node": ">=8.11.4"
   },
   "homepage": "https://github.com/kendinikertenkelebek/cyberpoints",
   "repository": {

@@ -43,17 +43,18 @@ class Community {
   /**
    * Get a single artisan by slug
    *
-   * @param {String} artisanSlug The slug of the artisan.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} args.artisanSlug The slug of the artisan.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .artisan('blacksmith', 'us', 'en_US');
+   * .artisan({ artisanSlug: 'blacksmith', region: 'us', locale: 'en_US' });
    * // or
-   * .artisan('blacksmith');
+   * .artisan({ artisanSlug: 'blacksmith' });
    * @returns {?String} API link for send an request
    */
 
-  artisan(artisanSlug, region = this._options.region, locale = this._options.locale) {
+  artisan({ artisanSlug, region = this._options.region, locale = this._options.locale } = {}) {
     if (!artisanSlug || typeof artisanSlug !== 'string') return undefined;
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).ArtisanAndRecipe.Artisan(artisanSlug);
@@ -62,18 +63,19 @@ class Community {
   /**
    * Get a single artisan by slug
    *
-   * @param {String} artisanSlug The slug of the artisan.
-   * @param {String} recipeSlug The slug of the recipe.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} args.artisanSlug The slug of the artisan.
+   * @param {String} args.recipeSlug The slug of the recipe.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .recipe('blacksmith', 'apprentice-flamberge', 'us', 'en_US');
+   * .recipe({ artisanSlug: 'blacksmith', recipeSlug: 'apprentice-flamberge', region: 'us', locale: 'en_US' });
    * // or
-   * .recipe('blacksmith', 'apprentice-flamberge');
+   * .recipe({ artisanSlug: 'blacksmith', recipeSlug: 'apprentice-flamberge' });
    * @returns {?String} API link for send an request
    */
 
-  recipe(artisanSlug, recipeSlug, region = this._options.region, locale = this._options.locale) {
+  recipe({ artisanSlug, recipeSlug, region = this._options.region, locale = this._options.locale } = {}) {
     if (!artisanSlug || !recipeSlug || typeof artisanSlug !== 'string' || typeof recipeSlug !== 'string') {
       return undefined;
     }
@@ -86,17 +88,18 @@ class Community {
   /**
    * Get a single character class by slug
    *
-   * @param {String} classSlug The slug of the character class.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} args.classSlug The slug of the character class.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .characterClass('barbarian', 'us', 'en_US');
+   * .characterClass({ classSlug: 'barbarian', region: 'us', locale: 'en_US' });
    * // or
-   * .characterClass('barbarian');
+   * .characterClass({ classSlug: 'barbarian' });
    * @returns {?String} API link for send an request
    */
 
-  characterClass(classSlug, region = this._options.region, locale = this._options.locale) {
+  characterClass({ classSlug, region = this._options.region, locale = this._options.locale } = {}) {
     if (!classSlug || typeof classSlug !== 'string') return undefined;
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).CharacterClassAndSkill.CharacterClass(classSlug);
@@ -105,18 +108,19 @@ class Community {
   /**
    * Get a single skill by slug, for a specific character class
    *
-   * @param {String} classSlug The slug of the character class.
-   * @param {String} skillSlug The slug of the skill.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} args.classSlug The slug of the character class.
+   * @param {String} args.skillSlug The slug of the skill.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .skill('barbarian', 'bash', 'us', 'en_US');
+   * .skill({ classSlug: 'barbarian', skillSlug: 'bash', region: 'us', locale: 'en_US' });
    * // or
-   * .skill('barbarian', 'bash');
+   * .skill({ classSlug: 'barbarian', skillSlug: 'bash' });
    * @returns {?String} API link for send an request
    */
 
-  skill(classSlug, skillSlug, region = this._options.region, locale = this._options.locale) {
+  skill({ classSlug, skillSlug, region = this._options.region, locale = this._options.locale } = {}) {
     if (!classSlug || !skillSlug || typeof classSlug !== 'string' || typeof skillSlug !== 'string') {
       return undefined;
     }
@@ -129,17 +133,18 @@ class Community {
   /**
    * Get a single follower by slug
    *
-   * @param {String} followerSlug The slug of the follower.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} args.followerSlug The slug of the follower.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .follower('templar', 'us', 'en_US');
+   * .follower({ followerSlug: 'templar', region: 'us', locale: 'en_US' });
    * // or
-   * .follower('templar');
+   * .follower({ followerSlug: 'templar' });
    * @returns {?String} API link for send an request
    */
 
-  follower(followerSlug, region = this._options.region, locale = this._options.locale) {
+  follower({ followerSlug, region = this._options.region, locale = this._options.locale } = {}) {
     if (!followerSlug || typeof followerSlug !== 'string') return undefined;
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Follower(followerSlug);
@@ -150,17 +155,18 @@ class Community {
   /**
    * Get a single item by item slug and ID
    *
-   * @param {String} itemSlugAndId The slug and ID of the item.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] The locale that should be reflected in localized data.
+   * @param {Object} args Request arguments.
+   * @param {String} args.itemSlugAndId The slug and ID of the item.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] The locale that should be reflected in localized data.
    * @example
-   * .item('itemSlugAndId', 'us', 'en_US');
+   * .item({ itemSlugAndId: 'itemSlugAndId', region: 'us', locale: 'en_US' });
    * // or
-   * .item('corrupted-ashbringer-Unique_Sword_2H_104_x1');
+   * .item({ itemSlugAndId: 'corrupted-ashbringer-Unique_Sword_2H_104_x1' });
    * @returns {?String} API link for send an request
    */
 
-  item(itemSlugAndId, region = this._options.region, locale = this._options.locale) {
+  item({ itemSlugAndId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!itemSlugAndId || typeof itemSlugAndId !== 'string') return undefined;
     let nephalem = getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Item(itemSlugAndId);

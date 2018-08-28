@@ -36,16 +36,17 @@ class Season {
   /**
    * Returns base information about available seasons
    *
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .index('CLIENT_TOKEN', 'us');
+   * .index({ token: 'CLIENT_TOKEN', region: 'us' });
    * // or
    * .index();
    * @returns {?String} API link for send an request
    */
 
-  index(token = this._options.token, region = this._options.region) {
+  index({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
     let nephalem = getRoot({ region, token });
     return Endpoints.Data(nephalem).Season.Index();
@@ -54,17 +55,18 @@ class Season {
   /**
    * Returns a leaderboard list for a particular season
    *
-   * @param {String|Number} id The season to lookup.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The season to lookup.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .get('1', 'CLIENT_TOKEN', 'us');
+   * .get({ id: '1', token: 'CLIENT_TOKEN', region: 'us' });
    * // or
-   * .get(1);
+   * .get({ id: 1 });
    * @returns {?String} API link for send an request
    */
 
-  get(id, token = this._options.token, region = this._options.region) {
+  get({ id, token = this._options.token, region = this._options.region } = {}) {
     if (!id || !token || isNaN(parseInt(id)) || typeof token !== 'string') {
       return undefined;
     }
@@ -75,18 +77,19 @@ class Season {
   /**
    * Returns a leaderboard
    *
-   * @param {String|Number} id The season to lookup.
-   * @param {String} leaderboard The leaderboard to lookup, you can find these strings in the Season API call.
-   * @param {String} [token] This parameter will optional if you're was declare in config file.
-   * @param {String} [region=eu] The region.
+   * @param {Object} args Request arguments.
+   * @param {String|Number} args.id The season to lookup.
+   * @param {String} args.leaderboard The leaderboard to lookup, you can find these strings in the Season API call.
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
    * @example
-   * .leaderboard('1', 'achievement-points', 'CLIENT_TOKEN');
+   * .leaderboard({ id: '1', leaderboard: 'achievement-points', token: 'CLIENT_TOKEN' });
    * // or
-   * .leaderboard(1, 'achievement-points');
+   * .leaderboard({ id: 1, leaderboard: 'achievement-points' });
    * @returns {?String} API link for send an request
    */
 
-  leaderboard(id, leaderboard, token = this._options.token, region = this._options.region) {
+  leaderboard({ id, leaderboard, token = this._options.token, region = this._options.region } = {}) {
     if (
       !id ||
       !leaderboard ||

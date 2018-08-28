@@ -41,19 +41,24 @@ class Character {
    * more additional fields can be retrieved. To access this API, craft a resource
    * URL pointing to the character who's information is to be retrieved.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=profile] The dataset you wish to retrieve for the character.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=profile] The dataset you wish to retrieve for the character.
    * Each field value is explained in more detail in the following methods.
    * If no fields are specified the API will only return basic data about the character.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .profile('test-realm', 'Peratryn', ['guild', 'feed']);
+   * .profile({ reailm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just profile.
+   * .profile({ reailm: 'test-realm', characterName: 'Peratryn', fields: ['guild', 'feed'] });
+   * // returns with 'profile' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  profile(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  profile({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -72,17 +77,28 @@ class Character {
   /**
    * A map of achievement data including completion timestamps and criteria information.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=achievements] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=achievements] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .achievements('test-realm', 'Peratryn', ['achievements', 'feed']);
+   * .achievements({ reailm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just achievements.
+   * .achievements({ realm: 'test-realm', characterName: 'Peratryn', fields: ['guild', 'feed'] });
+   * // returns with 'achievements' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  achievements(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  achievements({
+    realm,
+    characterName,
+    fields = [],
+    region = this._options.region,
+    locale = this._options.locale
+  } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -102,17 +118,22 @@ class Character {
    * A map of a character's appearance settings such as which face texture
    * they've selected and whether or not a healm is visible.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=appearance] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=appearance] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .appearance('test-realm', 'Peratryn', ['feed', 'appearance']);
+   * .appearance({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just appearance.
+   * .appearance({ realm: 'test-realm', characterName: 'Peratryn', fields: ['feed', 'guild'] });
+   * // returns with 'appearance' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  appearance(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  appearance({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -131,17 +152,22 @@ class Character {
   /**
    * The activity feed of the character.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=feed] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=feed] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .feed('test-realm', 'Peratryn', ['guild', 'feed']);
+   * .feed({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just feed.
+   * .feed({ realm: 'test-realm', characterName: 'Peratryn', fields: ['guild', 'items'] });
+   * // returns with 'feed' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  feed(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  feed({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -168,17 +194,22 @@ class Character {
    * To retrieve the character's rank within the guild, you must specific a separate
    * request to the guild profile resource.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=guild] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=guild] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .guild('test-realm', 'Peratryn', ['guild', 'feed']);
+   * .guild({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just guild.
+   * .guild({ realm: 'test-realm', characterName: 'Peratryn', fields: ['items', 'feed'] });
+   * // returns with 'guild' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  guild(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  guild({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -197,17 +228,22 @@ class Character {
   /**
    * A list of all of the combat pets obtained by the character.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=hunterPets] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=hunterPets] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .hunterPets('test-realm', 'Peratryn', ['hunterPets', 'feed']);
+   * .hunterPets({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just hunterPets.
+   * .hunterPets({ realm: 'test-realm', characterName: 'Peratryn', fields: ['guild', 'items'] });
+   * // returns with 'hunterPets' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  hunterPets(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  hunterPets({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -230,17 +266,22 @@ class Character {
    * When the `items` field is used, a map structure is returned that contains
    * information on the equipped items of that character as well as the average item level of the character.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=items] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=items] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .items('test-realm', 'Peratryn', ['items', 'guild']);
+   * .items({' realm: test-realm', characterName: 'Peratryn' });
+   * // returns just items.
+   * .items({' realm: test-realm', characterName: 'Peratryn', fields: ['items', 'guild'] });
+   * // returns with 'items' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  items(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  items({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -259,17 +300,22 @@ class Character {
   /**
    * A list of all of the mounts obtained by the character.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=mounts] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=mounts] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .mounts('test-realm', 'Peratryn', ['mounts', 'feed']);
+   * .mounts({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just mounts.
+   * .mounts({ realm: 'test-realm', characterName: 'Peratryn', fields: ['mounts', 'feed'] });
+   * // returns with 'mounts' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  mounts(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  mounts({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -288,17 +334,22 @@ class Character {
   /**
    * A list of the battle pets obtained by the character.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=pets] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=pets] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .pets('test-realm', 'Peratryn', ['pets', 'mounts']);
+   * .pets({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just pets.
+   * .pets({ realm: 'test-realm', characterName: 'Peratryn', fielids: ['feed', 'mounts'] });
+   * // returns with 'pets' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  pets(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  pets({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -323,17 +374,22 @@ class Character {
    * list is the list of 3 active abilities on that pet. If the pet is not high enough
    * level than it will always be the first three abilities that the pet has.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=petSlots] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=petSlots] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .petSlots('test-realm', 'Peratryn', ['petSlots', 'mounts']);
+   * .petSlots({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just petSlots.
+   * .petSlots({ realm: 'test-realm', characterName: 'Peratryn', fields: ['pets', 'mounts'] });
+   * // returns with 'petSlots' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  petSlots(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  petSlots({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -352,17 +408,28 @@ class Character {
   /**
    * A list of the character's professions. Does not include class professions.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=professions] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=professions] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .professions('test-realm', 'Peratryn', ['professions', 'feed']);
+   * .professions({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just professions.
+   * .professions({ realm: 'test-realm', characterName: 'Peratryn', fields: ['mounts', 'feed'] });
+   * // returns with 'professions' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  professions(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  professions({
+    realm,
+    characterName,
+    fields = [],
+    region = this._options.region,
+    locale = this._options.locale
+  } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -381,17 +448,28 @@ class Character {
   /**
    * A list of raids and bosses indicating raid progression and completeness.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=progression] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=progression] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .progression('test-realm', 'Peratryn', ['progression', 'feed']);
+   * .progression({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just progression.
+   * .progression({ realm: 'test-realm', characterName: 'Peratryn', fields: ['guild', 'feed'] });
+   * // returns with 'progression' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  progression(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  progression({
+    realm,
+    characterName,
+    fields = [],
+    region = this._options.region,
+    locale = this._options.locale
+  } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -410,17 +488,22 @@ class Character {
   /**
    * A map of pvp information including arena team membership and rated battlegrounds information.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=pvp] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=pvp] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .pvp('test-realm', 'Peratryn', ['pvp', 'guild']);
+   * .pvp({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just pvp.
+   * .pvp({ realm: 'test-realm', characterName: 'Peratryn', fields: ['feed', 'mounts'] });
+   * // returns with 'pvp' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  pvp(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  pvp({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -439,17 +522,22 @@ class Character {
   /**
    * A list of quests completed by the character.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=quests] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=quests] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .quests('test-realm', 'Peratryn', ['quests', 'feed']);
+   * .quests({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just quests.
+   * .quests({ realm: 'test-realm', characterName: 'Peratryn', fields: ['pvp', 'feed'] });
+   * // returns with 'quests' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  quests(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  quests({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -468,17 +556,22 @@ class Character {
   /**
    * A list of the factions that the character has an associated reputation with.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=reputation] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=reputation] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .reputation('test-realm', 'Peratryn', ['reputation', 'feed']);
+   * .reputation({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just reputation.
+   * .reputation({ realm: 'test-realm', characterName: 'Peratryn', fields: ['quests', 'feed'] });
+   * // returns with 'reputation' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  reputation(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  reputation({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -497,17 +590,22 @@ class Character {
   /**
    * A map of character statistics.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=statistics] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=statistics] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .statistics('test-realm', 'Peratryn', ['statistics', 'feed']);
+   * .statistics({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just statistics.
+   * .statistics({ realm: 'test-realm', characterName: 'Peratryn', fields: ['guild', 'feed'] });
+   * // returns with 'statistics' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  statistics(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  statistics({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -526,17 +624,22 @@ class Character {
   /**
    * A map of character attributes and stats.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=stats] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=stats] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .stats('test-realm', 'Peratryn', ['stats', 'feed']);
+   * .stats({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just stats.
+   * .stats({ realm: 'test-realm', characterName: 'Peratryn', fields: ['quests', 'feed'] });
+   * // returns with 'stats' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  stats(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  stats({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -555,17 +658,22 @@ class Character {
   /**
    * A list of talent structures.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=talents] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=talents] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .talents('test-realm', 'Peratryn', ['talents', 'stats']);
+   * .talents({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just talents.
+   * .talents({ realm: 'test-realm', characterName: 'Peratryn', fields: ['feed', 'stats'] });
+   * // returns with 'talents' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  talents(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  talents({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -584,17 +692,22 @@ class Character {
   /**
    * A list of the titles obtained by the character including the currently selected title.
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=titles] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=titles] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .titles('test-realm', 'Peratryn', ['titles', 'feed']);
+   * .titles({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just titles.
+   * .titles({ realm: 'test-realm', characterName: 'Peratryn', fields: ['guild', 'feed'] });
+   * // returns with 'titles' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  titles(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  titles({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||
@@ -613,17 +726,22 @@ class Character {
   /**
    * Raw character audit data that powers the character audit on the game site
    *
-   * @param {String} realm The character's realm. Can be provided as the proper realm name or the normalized realm name.
-   * @param {String} characterName The name of the character you want to retrieve.
-   * @param {Array} [fields=audit] Specifies what data you want to retrieve.
-   * @param {String} [region=eu] The region.
-   * @param {String} [locale=en_GB] What locale to use in the response.
+   * @param {Object} args Request arguments.
+   * @param {String} args.realm The character's realm. Can be provided as the proper
+   * realm name or the normalized realm name.
+   * @param {String} args.characterName The name of the character you want to retrieve.
+   * @param {Array} [args.fields=audit] Specifies what data you want to retrieve.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
    * @example
-   * .audit('test-realm', 'Peratryn', ['audit', 'feed']);
+   * .audit({ realm: 'test-realm', characterName: 'Peratryn' });
+   * // returns just audit.
+   * .audit({ realm: 'test-realm', characterName: 'Peratryn', fields: ['titles', 'guild'] });
+   * // returns with 'audit' in addition to the `fields` declared.
    * @returns {?String} API link for send an request
    */
 
-  audit(realm, characterName, fields, region = this._options.region, locale = this._options.locale) {
+  audit({ realm, characterName, fields = [], region = this._options.region, locale = this._options.locale } = {}) {
     if (
       !realm ||
       !characterName ||

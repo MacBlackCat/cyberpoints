@@ -42,7 +42,7 @@ If you're used correct values, returns an request link. otherwise returns 'undef
 
 ### Installation
 
-_cyberpoints_ requires [Node.js](https://nodejs.org/dist/latest) latest version to run.
+_cyberpoints_ requires [Node.js](https://nodejs.org/en/download/) LTS version to run.
 
 ```sh
 $ npm i cyberpoints -S
@@ -93,7 +93,7 @@ console.log(blizzard.outh2.user())
 
 _cyberpoints_ uses a number of open source projects to work properly:
 
-- [Node.JS] - _cyberpoints_ uses this powerful programming language.
+- [Node.js] - _cyberpoints_ uses this powerful programming language.
 - [VScode] - We're highly recommending this awesome code editor.
 
 And of course _cyberpoints_ itself is open source with a [public repository][repository] on _GitHub_.
