@@ -3,6 +3,7 @@ node_modules/
 
 ## Ignored Folders
 private/
+coverage/
 
 ## Ignored File Types
 .DS_Store

@@ -13,10 +13,12 @@ node_modules/
 .vscode/
 test/
 private/
+coverage/
 
 ## NPM Ignore
 .DS_Store
 .eslintrc
+.eslintignore
 .gitattributes
 .gitignore
 .npmrc

@@ -1,0 +1,7 @@
+## Ignored Files
+test/
+coverage/
+private/
+node_modules/
+.github/
+.vscode/
