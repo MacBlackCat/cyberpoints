@@ -11,6 +11,7 @@
     <a href="https://www.codacy.com/project/kendinikertenkelebek/cyberpoints/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kendinikertenkelebek/cyberpoints&amp;utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/94d13281601744a38cd43fb2b90a055e"/></a>
     <a href="https://github.com/kendinikertenkelebek/cyberpoints/issues"><img src="https://img.shields.io/github/issues/kendinikertenkelebek/cyberpoints.svg" alt="cyberpoints issues"></a>
     <a href="https://david-dm.org/kendinikertenkelebek/cyberpoints"><img src="https://david-dm.org/kendinikertenkelebek/cyberpoints/status.svg?maxAge=3600" alt="Dependencies" /></a>
+    <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/kendinikertenkelebek/cyberpoints.svg" /></a>
   </p>
   <p>
     <a href="https://nodei.co/npm/cyberpoints/"><img src="https://nodei.co/npm/cyberpoints.png?downloads=true&downloadRank=true&stars=true" alt="npm installnfo" /></a>
