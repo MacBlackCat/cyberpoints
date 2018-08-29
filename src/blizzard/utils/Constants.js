@@ -1,11 +1,9 @@
-const Util = require('../util/main');
-
-const Def = {
+exports.Def = {
   region: 'eu',
   locale: 'en_GB'
 };
 
-const Roots = [
+exports.Roots = [
   {
     region: 'us',
     hostname: 'https://us.api.battle.net',
@@ -51,29 +49,3 @@ const Roots = [
 ];
 
 exports.Brackets = ['2v2', '3v3', '5v5', 'rgb'];
-
-exports.Token = {
-  validate(given) {
-    if (!given || !given.key || typeof given.key !== 'string') {
-      throw new TypeError('INVALID_ACCESS_SETTINGS', 'key', 'API key Invalid');
-    }
-    if (!given.secret || typeof given.secret !== 'string') {
-      throw new TypeError('INVALID_ACCESS_SETTINGS', 'secret', 'API Client Secret Invalid');
-    }
-    return Util._mergeDefault(Def, given);
-  }
-};
-
-exports.getRoot = ({ region, locale, key, token, secret }) => {
-  const rootData = Util._selectRoot(region, Roots);
-  return Object.assign(
-    {},
-    { region: rootData.region },
-    { root: rootData.hostname },
-    { credentail: rootData.credentail },
-    { locale: rootData.locales.find(l => l === locale) || rootData.mainLocale },
-    { secret: secret ? secret : null },
-    { key: key ? key : null },
-    { token: token ? token : null }
-  );
-};

@@ -1,7 +1,7 @@
 'use strict';
 
 const Community = require('./community/main');
-const { Token } = require('../lib/util/Constants');
+const Util = require('../utils/Util');
 
 class StarCraft2 {
   constructor(options) {
@@ -28,7 +28,7 @@ class StarCraft2 {
      * }
      * @private
      */
-    this._options = Token.validate(options);
+    this._options = Util._validateOptions(options);
     this.community = new Community(this._options);
   }
 }

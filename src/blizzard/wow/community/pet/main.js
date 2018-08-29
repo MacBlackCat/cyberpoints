@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
 
 class Pet {
@@ -47,7 +46,7 @@ class Pet {
    */
 
   list({ region = this._options.region, locale = this._options.locale } = {}) {
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.MasterList();
   }
 
@@ -70,7 +69,7 @@ class Pet {
 
   abilities({ abilityId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!abilityId || isNaN(parseInt(abilityId))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.Abilities(abilityId);
   }
 
@@ -92,7 +91,7 @@ class Pet {
 
   species({ speciesId, region = this._options.region, locale = this._options.locae } = {}) {
     if (!speciesId || isNaN(parseInt(speciesId))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.Species(speciesId);
   }
 
@@ -138,7 +137,7 @@ class Pet {
     ) {
       return undefined;
     }
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pet.Stats(speciesId, level, breedId, qualityId);
   }
 }

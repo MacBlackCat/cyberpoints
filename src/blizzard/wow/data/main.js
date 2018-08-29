@@ -7,7 +7,6 @@ const Realm = require('./realm/main');
 const Region = require('./region/main');
 const Specialization = require('./specialization/main');
 
-const { getRoot } = require('../../lib/util/Constants');
 const { Endpoints } = require('../lib/endpoints/data/Endpoints');
 
 class Data {
@@ -36,12 +35,12 @@ class Data {
      * @private
      */
     this._options = options;
-    this.class = new Class(this._options);
-    this.connectedRealm = new ConnectedRealm(this._options);
-    this.keystone = new Keystone(this._options);
-    this.realm = new Realm(this._options);
-    this.region = new Region(this._options);
-    this.specialization = new Specialization(this._options);
+    this.class = new Class(options);
+    this.connectedRealm = new ConnectedRealm(options);
+    this.keystone = new Keystone(options);
+    this.realm = new Realm(options);
+    this.region = new Region(options);
+    this.specialization = new Specialization(options);
   }
 
   // MYTHIC CHALLENGE MODE API
@@ -65,7 +64,7 @@ class Data {
 
   challenge({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let core = getRoot({ region, locale, token });
+    let core = this._options.getRoot({ region, locale, token });
     return Endpoints.Data(core).MythicChallenge();
   }
 
@@ -89,7 +88,7 @@ class Data {
 
   token({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let core = getRoot({ region, locale, token });
+    let core = this._options.getRoot({ region, locale, token });
     return Endpoints.Data(core).Token();
   }
 }

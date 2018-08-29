@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
 
 class Item {
@@ -50,7 +49,7 @@ class Item {
 
   get({ itemId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!itemId || isNaN(parseInt(itemId))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Item.Item(itemId);
   }
 
@@ -71,7 +70,7 @@ class Item {
 
   set({ setId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!setId || isNaN(parseInt(setId))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Item.ItemSet(setId);
   }
 }

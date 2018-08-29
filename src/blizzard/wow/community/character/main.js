@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
 
 class Character {
@@ -70,7 +69,7 @@ class Character {
     }
     let molten = ['profile'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Profile(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -110,7 +109,7 @@ class Character {
     }
     let molten = ['achievements'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Achievements(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -145,7 +144,7 @@ class Character {
     }
     let molten = ['appearance'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Appearance(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -179,7 +178,7 @@ class Character {
     }
     const molten = ['feed'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Feed(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -221,7 +220,7 @@ class Character {
     }
     let molten = ['guild'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Guild(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -255,7 +254,7 @@ class Character {
     }
     let molten = ['hunterPets'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.HunterPets(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -293,7 +292,7 @@ class Character {
     }
     let molten = ['items'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Items(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -327,7 +326,7 @@ class Character {
     }
     let molten = ['mounts'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Mounts(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -361,7 +360,7 @@ class Character {
     }
     let molten = ['pets'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Pets(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -401,7 +400,7 @@ class Character {
     }
     let molten = ['petSlots'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.PetStlots(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -441,7 +440,7 @@ class Character {
     }
     let molten = ['professions'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Professions(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -481,7 +480,7 @@ class Character {
     }
     let molten = ['progression'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Progression(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -515,7 +514,7 @@ class Character {
     }
     let molten = ['pvp'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Pvp(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -549,7 +548,7 @@ class Character {
     }
     let molten = ['quests'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Quests(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -583,7 +582,7 @@ class Character {
     }
     let molten = ['reputation'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Reputation(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -617,7 +616,7 @@ class Character {
     }
     let molten = ['statistics'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Statistics(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -651,7 +650,7 @@ class Character {
     }
     let molten = ['stats'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Stats(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -685,7 +684,7 @@ class Character {
     }
     let molten = ['talents'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Talents(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -719,7 +718,7 @@ class Character {
     }
     let molten = ['titles'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Titles(realm.toLowerCase(), characterName, Fields.toString());
   }
 
@@ -753,7 +752,7 @@ class Character {
     }
     let molten = ['audit'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Character.Audit(realm.toLowerCase(), characterName, Fields.toString());
   }
 }

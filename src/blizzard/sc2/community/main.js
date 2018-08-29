@@ -2,7 +2,6 @@
 
 const Data = require('./data/main');
 const Profile = require('./profile/main');
-const { getRoot } = require('../../lib/util/Constants');
 const { Endpoints } = require('../lib/endpoints/community/Endpoints');
 
 class Community {
@@ -31,8 +30,8 @@ class Community {
      * @private
      */
     this._options = options;
-    this.data = new Data(this._options);
-    this.profile = new Profile(this._options);
+    this.data = new Data(options);
+    this.profile = new Profile(options);
   }
 
   // LADDER API
@@ -53,7 +52,7 @@ class Community {
 
   ledder({ id, region = this._options.region, locale = this._options.locale } = {}) {
     if (!id || isNaN(parseInt(id))) return undefined;
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Ledder(id);
   }
 }

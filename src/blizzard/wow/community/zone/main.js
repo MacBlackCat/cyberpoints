@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
 
 class Zone {
@@ -51,7 +50,7 @@ class Zone {
 
   list({ region = this._options.region, locale = this._options.locale } = {}) {
     const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = this._options.getRoot(molten);
     return Endpoints.Community(core).Zone.MasterList();
   }
 
@@ -72,7 +71,7 @@ class Zone {
   get({ zoneId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!zoneId || isNaN(parseInt(zoneId))) return undefined;
     const molten = { region, locale, key: this._options.key };
-    let core = getRoot(molten);
+    let core = this._options.getRoot(molten);
     return Endpoints.Community(core).Zone.Zone(zoneId);
   }
 }

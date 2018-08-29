@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/data/Endpoints');
 
 class Keystone {
@@ -59,7 +58,7 @@ class Keystone {
     if (!connectedReamId || !token || isNaN(parseInt(connectedReamId)) || typeof token !== 'string') {
       return undefined;
     }
-    let core = getRoot({ region, locale, token: this._options.token });
+    let core = this._options.getRoot({ region, locale, token: this._options.token });
     return Endpoints.Data(core).Keystone.Index(connectedReamId);
   }
 
@@ -100,7 +99,7 @@ class Keystone {
     ) {
       return undefined;
     }
-    let core = getRoot({ region, locale, token });
+    let core = this._options.getRoot({ region, locale, token });
     return Endpoints.Data(core).Keystone.Leaderboard(connectedRalmId, dungeonId, period);
   }
 }

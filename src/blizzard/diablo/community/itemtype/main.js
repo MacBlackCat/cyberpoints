@@ -1,7 +1,6 @@
 'use strict';
 
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
-const { getRoot } = require('../../../lib/util/Constants');
 
 class ItemType {
   constructor(options) {
@@ -47,7 +46,7 @@ class ItemType {
    */
 
   index({ region = this._options.region, locale = this._options.locale } = {}) {
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).ItemType.Index();
   }
 
@@ -67,7 +66,7 @@ class ItemType {
 
   get({ itemTypeSlug, region = this._options.region, locale = this._options.locale } = {}) {
     if (!itemTypeSlug || typeof itemTypeSlug !== 'string') return undefined;
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).ItemType.ItemType(itemTypeSlug);
   }
 }

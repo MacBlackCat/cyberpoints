@@ -9,7 +9,7 @@ const Pet = require('./pet/main');
 const Resource = require('./resources/main');
 const Zone = require('./zone/main');
 
-const { getRoot, Brackets } = require('../../lib/util/Constants');
+const { Brackets } = require('../../utils/Constants');
 const { Endpoints } = require('../lib/endpoints/community/Endpoints');
 
 class Community {
@@ -38,14 +38,14 @@ class Community {
      * @private
      */
     this._options = options;
-    this.boss = new Boss(this._options);
-    this.challenge = new Challenge(this._options);
-    this.character = new Character(this._options);
-    this.guild = new Guild(this._options);
-    this.item = new Item(this._options);
-    this.pet = new Pet(this._options);
-    this.resource = new Resource(this._options);
-    this.zone = new Zone(this._options);
+    this.boss = new Boss(options);
+    this.challenge = new Challenge(options);
+    this.character = new Character(options);
+    this.guild = new Guild(options);
+    this.item = new Item(options);
+    this.pet = new Pet(options);
+    this.resource = new Resource(options);
+    this.zone = new Zone(options);
   }
 
   // ACHIEVEMENT API
@@ -66,7 +66,7 @@ class Community {
 
   achievement({ id, region = this._options.region, locale = this._options.locale } = {}) {
     if (!id || isNaN(parseInt(id))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Achievement(id);
   }
 
@@ -94,7 +94,7 @@ class Community {
 
   auction({ realm, region = this._options.region, locale = this._options.locale } = {}) {
     if (!realm || typeof realm !== 'string') return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Auction(realm.toLocaleLowerCase());
   }
 
@@ -114,7 +114,7 @@ class Community {
    */
 
   mount({ region = this._options.region, locale = this._options.locale } = {}) {
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Mount();
   }
 
@@ -140,7 +140,7 @@ class Community {
     if (!bracket || typeof bracket !== 'string' || !Brackets.includes(bracket)) {
       return undefined;
     }
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Pvp(bracket);
   }
 
@@ -162,7 +162,7 @@ class Community {
 
   quest({ questId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!questId || isNaN(parseInt(questId))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Quest(questId);
   }
 
@@ -204,7 +204,7 @@ class Community {
    */
 
   reamlStatus({ region = this._options.region, locale = this._options.locale } = {}) {
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).RealmStatus();
   }
 
@@ -226,7 +226,7 @@ class Community {
 
   recipe({ recipeId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!recipeId || isNaN(parseInt(recipeId))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Recipe(recipeId);
   }
 
@@ -248,7 +248,7 @@ class Community {
 
   spell({ spellId, region = this._options.region, locale = this._options.locale } = {}) {
     if (!spellId || isNaN(parseInt(spellId))) return undefined;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Spell(spellId);
   }
 }

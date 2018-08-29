@@ -1,7 +1,7 @@
 'use strict';
 
-const { getRoot } = require('../lib/util/Constants');
-const { Endpoints } = require('../lib/endpoints/Credentails');
+const Util = require('../utils/Util');
+const { Endpoints } = require('./endpoints/Credentails');
 
 class Credentails {
   constructor(options) {
@@ -28,7 +28,7 @@ class Credentails {
      * }
      * @private
      */
-    this._options = options;
+    this._options = Util._validateOptions(options);
   }
 
   /**
@@ -45,7 +45,7 @@ class Credentails {
 
   fetch({ region = this._options.region } = {}) {
     if (typeof region !== 'string') return undefined;
-    let core = getRoot({ region, key: this._options.key, secret: this._options.secret });
+    let core = this._options.getRoot({ region, key: this._options.key, secret: this._options.secret });
     return Endpoints.Credentails(core).FetchToken();
   }
 
@@ -64,7 +64,7 @@ class Credentails {
 
   check({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let core = getRoot({ region });
+    let core = this._options.getRoot({ region });
     return Endpoints.Credentails(core).CheckToken(token);
   }
 }

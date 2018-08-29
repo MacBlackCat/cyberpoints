@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
 
 class Guild {
@@ -74,7 +73,7 @@ class Guild {
     }
     let molten = ['achievements,challenge'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Guild.Profile(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 
@@ -110,7 +109,7 @@ class Guild {
     }
     let molten = ['members'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Guild.Members(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 
@@ -158,7 +157,7 @@ class Guild {
     }
     let molten = ['achievements'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Guild.Achievements(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString()); // eslint-disable-line max-len
   }
 
@@ -195,7 +194,7 @@ class Guild {
     }
     let molten = ['news'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Guild.News(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 
@@ -229,7 +228,7 @@ class Guild {
     }
     let molten = ['challenge'];
     const Fields = fields && fields.length ? Array.prototype.push.apply(molten, fields) && molten : molten;
-    let core = getRoot({ region, locale, key: this._options.key });
+    let core = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(core).Guild.Challenge(realm.toLowerCase(), guildName.toLowerCase(), Fields.toString());
   }
 }

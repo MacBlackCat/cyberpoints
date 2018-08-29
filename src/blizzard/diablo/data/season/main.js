@@ -1,7 +1,6 @@
 'use strict';
 
 const { Endpoints } = require('../../lib/endpoints/data/Endpoints');
-const { getRoot } = require('../../../lib/util/Constants');
 
 class Season {
   constructor(options) {
@@ -48,7 +47,7 @@ class Season {
 
   index({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let nephalem = getRoot({ region, token });
+    let nephalem = this._options.getRoot({ region, token });
     return Endpoints.Data(nephalem).Season.Index();
   }
 
@@ -70,7 +69,7 @@ class Season {
     if (!id || !token || isNaN(parseInt(id)) || typeof token !== 'string') {
       return undefined;
     }
-    let nephalem = getRoot({ region, token });
+    let nephalem = this._options.getRoot({ region, token });
     return Endpoints.Data(nephalem).Season.Season(id);
   }
 
@@ -100,7 +99,7 @@ class Season {
     ) {
       return undefined;
     }
-    let nephalem = getRoot({ region, token });
+    let nephalem = this._options.getRoot({ region, token });
     return Endpoints.Data(nephalem).Season.Leaderboard(id, leaderboard);
   }
 }

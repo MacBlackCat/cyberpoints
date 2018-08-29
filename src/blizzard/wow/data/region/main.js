@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/data/Endpoints');
 
 class Region {
@@ -51,7 +50,7 @@ class Region {
 
   index({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let core = getRoot({ region, locale, token });
+    let core = this._options.getRoot({ region, locale, token });
     return Endpoints.Data(core).Region.Index();
   }
 
@@ -76,7 +75,7 @@ class Region {
     if (!regionId || !token || isNaN(parseInt(regionId)) || typeof token !== 'string') {
       return undefined;
     }
-    let core = getRoot({ region, locale, token });
+    let core = this._options.getRoot({ region, locale, token });
     return Endpoints.Data(core).Region.Region(regionId);
   }
 }

@@ -1,9 +1,8 @@
 'use strict';
 
 const { Endpoints } = require('./lib/endpoints/community/Endpoints');
-const { getRoot } = require('../lib/util/Constants');
 const Profile = require('./profile/main');
-const { Token } = require('../lib/util/Constants');
+const Util = require('../utils/Util');
 
 class Outh2 {
   constructor(options) {
@@ -31,7 +30,7 @@ class Outh2 {
      * }
      * @private
      */
-    this._options = Token.validate(options);
+    this._options = Util._validateOptions(options);
     this.profile = new Profile(this._options);
   }
 
@@ -52,7 +51,7 @@ class Outh2 {
 
   user({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let conn = getRoot({ region, token });
+    let conn = this._options.getRoot({ region, token });
     return Endpoints.Community(conn).Account();
   }
 }

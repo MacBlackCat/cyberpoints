@@ -3,7 +3,7 @@
 const Community = require('./community/main');
 const Credentails = require('../credentails/main');
 const Data = require('./data/main');
-const { Token } = require('../lib/util/Constants');
+const Util = require('../utils/Util');
 
 class Diablo {
   constructor(options) {
@@ -30,7 +30,7 @@ class Diablo {
      * }
      * @private
      */
-    this._options = Token.validate(options);
+    this._options = Util._validateOptions(options);
     this.community = new Community(this._options);
     this.credentails = new Credentails(this._options);
     this.data = new Data(this._options);

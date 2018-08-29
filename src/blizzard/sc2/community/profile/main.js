@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
 
 class Profile {
@@ -60,7 +59,7 @@ class Profile {
     ) {
       return undefined;
     }
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Profile(id, profileRegion, name);
   }
 
@@ -91,7 +90,7 @@ class Profile {
     ) {
       return undefined;
     }
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Ledders(id, profileRegion, name);
   }
 
@@ -122,7 +121,7 @@ class Profile {
     ) {
       return undefined;
     }
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.MatchHistory(id, profileRegion, name);
   }
 }

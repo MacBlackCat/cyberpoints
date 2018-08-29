@@ -1,7 +1,6 @@
 'use strict';
 
 const { Endpoints } = require('./../lib/endpoints/community/Endpoints');
-const { getRoot } = require('../../lib/util/Constants');
 
 class Profile {
   constructor(options) {
@@ -30,7 +29,6 @@ class Profile {
      * @private
      */
     this._options = options;
-    this.profile = new Profile(this._options);
   }
 
   // PROFILE API
@@ -50,7 +48,7 @@ class Profile {
 
   sc2({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let conn = getRoot({ region, token });
+    let conn = this._options.getRoot({ region, token });
     return Endpoints.Community(conn).Profile.SC2();
   }
 
@@ -69,7 +67,7 @@ class Profile {
 
   wow({ token = this._options.token, region = this._options.region } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let conn = getRoot({ region, token });
+    let conn = this._options.getRoot({ region, token });
     return Endpoints.Community(conn).Profile.WOW();
   }
 }

@@ -1,6 +1,5 @@
 'use strict';
 
-const { getRoot } = require('../../../lib/util/Constants');
 const { Endpoints } = require('../../lib/endpoints/data/Endpoints');
 
 class ConnectedRealm {
@@ -51,7 +50,7 @@ class ConnectedRealm {
 
   index({ token = this._options.token, region = this._options.region, locale = this._options.locale } = {}) {
     if (!token || typeof token !== 'string') return undefined;
-    let core = getRoot({ region, locale, token });
+    let core = this._options.getRoot({ region, locale, token });
     return Endpoints.Data(core).ConnectedRealm.Index();
   }
 
@@ -81,7 +80,7 @@ class ConnectedRealm {
     if (!connectedRealmId || !token || isNaN(parseInt(connectedRealmId)) || typeof token !== 'string') {
       return undefined;
     }
-    let core = getRoot({ region, locale, token });
+    let core = this._options.getRoot({ region, locale, token });
     return Endpoints.Data(core).ConnectedRealm.ConnectedRealm(connectedRealmId);
   }
 }

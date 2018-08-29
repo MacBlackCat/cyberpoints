@@ -1,7 +1,6 @@
 'use strict';
 
 const { Endpoints } = require('../../lib/endpoints/community/Endpoints');
-const { getRoot } = require('../../../lib/util/Constants');
 
 class Profile {
   constructor(options) {
@@ -49,7 +48,7 @@ class Profile {
 
   account({ account, region = this._options.region, locale = this._options.locale } = {}) {
     if (!account || typeof account !== 'string') return undefined;
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Account(account.replace('#', '-'));
   }
 
@@ -72,7 +71,7 @@ class Profile {
     if (!account || heroId || typeof account !== 'string' || isNaN(parseInt(heroId))) {
       return undefined;
     }
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.Hero(account.replace('#', '-'), heroId);
   }
 
@@ -95,7 +94,7 @@ class Profile {
     if (!account || heroId || typeof account !== 'string' || isNaN(parseInt(heroId))) {
       return undefined;
     }
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.DetailedHeroItems(account.replace('#', '-'), heroId);
   }
 
@@ -118,7 +117,7 @@ class Profile {
     if (!account || heroId || typeof account !== 'string' || isNaN(parseInt(heroId))) {
       return undefined;
     }
-    let nephalem = getRoot({ region, locale, key: this._options.key });
+    let nephalem = this._options.getRoot({ region, locale, key: this._options.key });
     return Endpoints.Community(nephalem).Profile.DetailedFolloweItems(account.replace('#', '-'), heroId);
   }
 }
