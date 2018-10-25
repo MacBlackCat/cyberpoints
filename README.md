@@ -34,12 +34,17 @@ If you're used correct values, returns an request link. otherwise returns 'undef
   - StarCraft - 100%
   - Outh - 100%
 
+- Riot Games
+
+  - League of Legends - 80%
+
 ### Why?
 
 - Object-oriented
 - Speedy and efficient
+- Modular and flexible
 - Feature-rich
-- Flexible
+- Maintainable
 
 ### Installation
 
@@ -76,17 +81,13 @@ console.log(blizzard.outh2.user())
 
 ### To-Do's
 
-- Riot Games
-
-  - League of Legends
+- Twitch
 
 - PUBG
 
 - Fortnite
 
 - Steam
-
-- Twitch
 
 - Youtube
 

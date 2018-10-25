@@ -13,6 +13,7 @@ exports.Endpoints = {
         Leaderboard: (connectedRalmId, dungeonId, period) =>
           `${root}/data/wow/connected-realm/${connectedRalmId}/mythic-leaderboard/${dungeonId}/period/${period}?namespace=dynamic-${region}&locale=${locale}&access_token=${token}` // eslint-disable-line max-len
       },
+      Raid: (raid, faction) => `${root}/data/wow/leaderboard/hall-of-fame/${raid}/${faction}?namespace=dynamic-${region}&locale=${locale}&access_token=${token}`, // eslint-disable-line max-len
       MythicChallenge: () =>
         `${root}/data/wow/mythic-challenge-mode/?namespace=dynamic-${region}&locale=${locale}&access_token=${token}`,
       PlayableClass: {
