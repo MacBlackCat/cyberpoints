@@ -68,6 +68,34 @@ class Data {
     return Endpoints.Data(core).MythicChallenge();
   }
 
+  // MYTHIC RAID LEADERBOARD API
+
+  /**
+   * Get the leaderboard for a given raid and faction.
+   *
+   * @param {Object} args Request arguments.
+   * @param {String} args.raid The raid a leaderboard refers to.
+   * @param {String} args.faction Player faction (Alliance or Horde).
+   * @param {String} [args.token] This parameter will optional if you're was declare in config file.
+   * @param {String} [args.region=eu] The region.
+   * @param {String} [args.locale=en_GB] What locale to use in the response.
+   * @example
+   * .leaderboard({ raid: 'Uldir', faction: 'Alliance', token: 'CLIENT_TOKEN', region: 'kr', locale: 'en_GB' });
+   * @returns {?String} API link for send an request
+   */
+
+  leaderboard({
+    raid,
+    faction,
+    token = this._options.token,
+    region = this._options.region,
+    locale = this._options.locale
+  } = {}) {
+    if (!raid || !faction || !token || typeof token !== 'string') return undefined;
+    let core = this._options.getRoot({ region, locale, token });
+    return Endpoints.Data(core).Raid(raid, faction);
+  }
+
   // WOW TOKEN API
 
   /**
