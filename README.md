@@ -1,11 +1,10 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://discord.gg/fGPcybt"><img src="https://image.ibb.co/mDgm3U/cpoints.png" width="546" alt="cyberpoints" /></a>
+    <a href=""><img src="https://image.ibb.co/mDgm3U/cpoints.png" width="546" alt="cyberpoints" /></a>
   </p>
   <br />
   <p>
-    <a href="https://discord.gg/fGPcybt"><img src="https://discordapp.com/api/guilds/483516135485210624/embed.png" alt="Discord server" /></a>
     <a href="https://www.npmjs.com/package/cyberpoints"><img src="https://img.shields.io/npm/v/cyberpoints.svg?maxAge=3600" alt="NPM version" /></a>
     <a href="https://www.npmjs.com/package/cyberpoints"><img src="https://img.shields.io/npm/dt/cyberpoints.svg?maxAge=3600" alt="NPM downloads" /></a>
     <a href="https://www.codacy.com/project/kendinikertenkelebek/cyberpoints/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kendinikertenkelebek/cyberpoints&amp;utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/94d13281601744a38cd43fb2b90a055e"/></a>
@@ -34,12 +33,17 @@ If you're used correct values, returns an request link. otherwise returns 'undef
   - StarCraft - 100%
   - Outh - 100%
 
+- Riot Games
+
+  - League of Legends - 80%
+
 ### Why?
 
 - Object-oriented
 - Speedy and efficient
+- Modular and flexible
 - Feature-rich
-- Flexible
+- Maintainable
 
 ### Installation
 
@@ -76,17 +80,13 @@ console.log(blizzard.outh2.user())
 
 ### To-Do's
 
-- Riot Games
-
-  - League of Legends
+- Twitch
 
 - PUBG
 
 - Fortnite
 
 - Steam
-
-- Twitch
 
 - Youtube
 
