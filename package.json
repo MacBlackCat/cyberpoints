@@ -27,7 +27,7 @@
     "d3"
   ],
   "devDependencies": {
-    "@types/node": "^10.9.3",
+    "@types/node": "^10.12.8",
     "codecov": "^3.0.4",
     "eslint": "^5.4.0",
     "eslint-plugin-jest": "^21.22.0",
