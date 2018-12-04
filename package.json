@@ -41,7 +41,7 @@
   "os": [
     "darwin",
     "linux",
-    "win64"
+    "win32"
   ],
   "engines": {
     "node": ">=8.11.4"
